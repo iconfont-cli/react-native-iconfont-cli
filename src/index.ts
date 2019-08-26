@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import minimist from 'minimist';
 import { createJson } from './commands/createJson';
 import { renderHelp } from './commands/help';
