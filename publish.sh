@@ -8,6 +8,7 @@ rm -rf ./src/iconfont
 mv ./build/src/* ./build
 rm -r ./build/src
 cp README.md package.json ./build
+cp -rf src/templates ./build/templates
 
 old_registry=$(npm config get registry)
 npm config set registry https://registry.npmjs.org

@@ -4,11 +4,6 @@
 import React from 'react';
 import { #svgComponents# } from 'react-native-svg';
 
-interface Props {
-  size?: number;
-  name: '#names#';
-}
-
 const Icon = ({ size, name }) => {
   switch (name) {
 #cases#
