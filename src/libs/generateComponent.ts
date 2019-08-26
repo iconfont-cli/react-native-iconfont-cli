@@ -7,6 +7,13 @@ import { camelCase, upperFirst } from 'lodash';
 import { XmlData } from './fetchXml';
 import { getConfig } from './getConfig';
 import { getTemplate } from './getTemplate';
+import {
+  replaceCases,
+  replaceComponentName, replaceNames,
+  replaceSingleIconContent,
+  replaceSize,
+  replaceSvgComponents,
+} from './replace';
 
 const DOM_MAP = {
   path: 'Path',
@@ -103,30 +110,6 @@ export const generateComponent = (data: XmlData) => {
   console.log(colors.green('\nDone!\n'));
 };
 
-const replaceSize = (content: string, size: number) => {
-  return content.replace(/#size#/g, String(size));
-};
-
-const replaceCases = (content: string, cases: string) => {
-  return content.replace(/#cases#/g, cases);
-};
-
-const replaceSvgComponents = (content: string, components: Set<string>) => {
-  return content.replace(/#svgComponents#/g, [...components].join(', '));
-};
-
-const replaceNames = (content: string, names: string[]) => {
-  return content.replace(/#names#/g, names.join(`' | '`));
-};
-
-const replaceComponentName = (content: string, name: string) => {
-  return content.replace(/#componentName#/g, name);
-};
-
-const replaceSingleIconContent = (content: string, render: string) => {
-  return content.replace(/#iconContent#/g, render);
-};
-
 const generateCase = (data: XmlData['svg']['symbol'][number], baseIdent: number) => {
   let template = `\n${' '.repeat(baseIdent)}<Svg viewBox="${data.$.viewBox}" width={size} height={size}>\n`;
 
@@ -137,13 +120,9 @@ const generateCase = (data: XmlData['svg']['symbol'][number], baseIdent: number)
       continue;
     }
 
-
-
     if (data[domName].$) {
       template += `${' '.repeat(baseIdent + 2)}<${realDomName} ${addAttribute(data[domName])} />\n`;
     } else if (Array.isArray(data[domName])) {
-      // template += data[domName].map(addAttribute).join(' ');
-
       data[domName].forEach((sub) => {
         template += `${' '.repeat(baseIdent + 2)}<${realDomName} ${addAttribute(sub)} />\n`;
       });
