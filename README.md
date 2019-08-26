@@ -45,15 +45,17 @@ cd ios && pod install
 此时项目根目录会生成一个`iconfont.json`的文件，内容如下：
 ```json
 {
-  "symbol_url": "",
+  "symbol_url": "复制官网提供的JS链接",
   "safe_dir": "./src/iconfont",
   "trim_icon_prefix": "icon-",
   "default_font_size": 18,
   "use_typescript": false
 }
 ```
+### 配置参数说明：
 ### symbol_url
-来自[iconfont](http://iconfont.cn)官网提供的项目链接
+请直接复制[iconfont](http://iconfont.cn)官网提供的项目链接。请务必看清是`.js`后缀而不是.css后缀。
+<br />
 ![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/symbol-url.png?raw=true)
 
 ### safe_dir
@@ -111,6 +113,12 @@ export const App = () => {
 };
 ```
 
+# 更新图标
+当您在iconfont.cn中的图标有变更时，只需更改配置`symbol_url`，然后再次执行`Step 4`即可生成最新的图标组件
+```bash
+# After change symbol_url
+./node_modules/.bin/iconfont
+```
 --------
 
 欢迎使用，并给我一些反馈和建议，让这个库做的更好
