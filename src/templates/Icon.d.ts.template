@@ -1,0 +1,10 @@
+import { FunctionComponent } from 'react';
+
+interface Props {
+  size?: number;
+  name: '#names#';
+}
+
+declare const Icon: FunctionComponent<Props>;
+
+export = Icon;

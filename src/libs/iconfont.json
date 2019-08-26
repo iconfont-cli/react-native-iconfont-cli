@@ -1,0 +1,7 @@
+{
+  "symbol_url": "",
+  "safe_dir": "./src/iconfont",
+  "trim_icon_prefix": "icon-",
+  "default_font_size": 18,
+  "use_typescript": false
+}

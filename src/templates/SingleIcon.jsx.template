@@ -1,0 +1,18 @@
+/* tslint:disable */
+/* eslint-disable */
+
+import React from 'react';
+import { #svgComponents# } from 'react-native-svg';
+
+const #componentName# = ({ size }) => {
+  return (#iconContent#  );
+};
+
+#componentName#.defaultProps = {
+  size: #size#,
+};
+
+export default #componentName#;
+
+/* eslint-enable */
+/* tslint:enable */

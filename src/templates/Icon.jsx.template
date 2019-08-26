@@ -1,0 +1,27 @@
+/* tslint:disable */
+/* eslint-disable */
+
+import React from 'react';
+import { #svgComponents# } from 'react-native-svg';
+
+interface Props {
+  size?: number;
+  name: '#names#';
+}
+
+const Icon = ({ size, name }) => {
+  switch (name) {
+#cases#
+  }
+
+  return null;
+};
+
+Icon.defaultProps = {
+  size: #size#,
+};
+
+export default Icon;
+
+/* eslint-enable */
+/* tslint:enable */

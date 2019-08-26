@@ -1,0 +1,22 @@
+/* tslint:disable */
+/* eslint-disable */
+
+import React, { FunctionComponent } from 'react';
+import { #svgComponents# } from 'react-native-svg';
+
+interface Props {
+  size?: number;
+}
+
+const #componentName#: FunctionComponent<Props> = ({ size }) => {
+  return (#iconContent#  );
+};
+
+#componentName#.defaultProps = {
+  size: #size#,
+};
+
+export default #componentName#;
+
+/* eslint-enable */
+/* tslint:enable */
