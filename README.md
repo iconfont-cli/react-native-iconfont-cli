@@ -53,7 +53,7 @@ cd ios && pod install
 }
 ```
 ### symbol_url
-来自[iconfont](iconfont.cn)官网提供的项目链接
+来自[iconfont](http://iconfont.cn)官网提供的项目链接
 ![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/symbol-url.png?raw=true)
 
 ### safe_dir
