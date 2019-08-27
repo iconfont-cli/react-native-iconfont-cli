@@ -7,7 +7,7 @@ rm -rf ./src/iconfont
 
 mv ./build/src/* ./build
 rm -r ./build/src
-cp README.md package.json ./build
+cp README.md package.json LICENSE ./build
 cp -rf src/templates ./build/templates
 
 old_registry=$(npm config get registry)
