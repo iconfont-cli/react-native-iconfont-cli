@@ -61,7 +61,7 @@ cd ios && pod install
 ### symbol_url
 请直接复制[iconfont](http://iconfont.cn)官网提供的项目链接。请务必看清是`.js`后缀而不是.css后缀。
 <br />
-![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/symbol-url.png?raw=true)
+![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/images/symbol-url.png?raw=true)
 
 ### use_typescript
 如果您的项目使用Typescript编写，请设置为true。这个选项将决定生成的图标组件是`.tsx`还是`.jsx`后缀。
@@ -101,7 +101,7 @@ cd ios && pod install
 
 1、使用汇总`Icon`组件：
 ```typescript jsx
-import Icon from '../src/iconfont/Icon';
+import Icon from '../src/components/iconfont/Icon';
 
 export const App = () => {
   return (
@@ -116,8 +116,8 @@ export const App = () => {
 2、当您配置的`generate_mode=depends-on`时，您可以使用单个图标。这样可以避免没用到的图标也打包进App：
 
 ```typescript jsx
-import IconUser from '../src/iconfont/IconUser';
-import IconSky from '../src/iconfont/IconSky';
+import IconUser from '../src/components/iconfont/IconUser';
+import IconSky from '../src/components/iconfont/IconSky';
 
 export const App = () => {
   return (
@@ -133,21 +133,21 @@ export const App = () => {
 ### 图标尺寸
 根据配置`default_icon_size`，每个图标都会有一个默认的尺寸，你可以随时覆盖。
 ```typescript jsx
-<Icon name="user" size={20} />
+<Icon name="alipay" size={20} />
 ```
 ### 图标单色
 单色图标，如果不指定颜色值，图标将渲染原本的颜色。如果你想设置为其他的颜色，那么设置一个你想要的颜色即可
 ```typescript jsx
-<Icon name="user" color="#ff0000" />
-
-<Icon name="user" color="#red" />
+<Icon name="alipay" color="green" />
 ```
+![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/images/one-color-icon.png?raw=true)
 ### 图标多色彩
 多色彩的图标，如果不指定颜色值，图标将渲染原本的多色彩。如果你想设置为其他的颜色，那么设置一组你想要的颜色即可
 ```typescript jsx
-<Icon name="user" color={['#ff0000', 'green']} />
+<Icon name="user" color={['green', 'orange']} />
 ```
 颜色组的数量以及排序，需要根据当前图标的信息来确定。您需要进入图标组件中查看并得出结论。
+![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/images/multi-color-icon.png?raw=true)
 
 **注意：如果color是字符串而不是数组，那么即使是多色彩图标，也会变成单色图标。**
 
