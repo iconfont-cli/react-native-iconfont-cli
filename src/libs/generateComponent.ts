@@ -17,9 +17,11 @@ import {
 import { whitespace } from './whitespace';
 import { GENERATE_MODE } from './generateMode';
 
-const DOM_MAP = {
+const SVG_MAP = {
   path: 'Path',
 };
+
+const ATTRIBUTE_FILL_MAP = ['path'];
 
 export const generateComponent = (data: XmlData) => {
   const config = getConfig();
@@ -129,7 +131,7 @@ const generateCase = (data: XmlData['svg']['symbol'][number], baseIdent: number)
   let template = `\n${whitespace(baseIdent)}<Svg viewBox="${data.$.viewBox}" width={size} height={size}>\n`;
 
   for (const domName of Object.keys(data)) {
-    let realDomName = DOM_MAP[domName];
+    let realDomName = SVG_MAP[domName];
 
     if (domName === '$') {
       continue;
@@ -142,13 +144,14 @@ const generateCase = (data: XmlData['svg']['symbol'][number], baseIdent: number)
 
     const counter = {
       colorIndex: 0,
+      baseIdent,
     };
 
     if (data[domName].$) {
-      template += `${whitespace(baseIdent + 2)}<${realDomName}${addAttribute(data[domName], counter)} />\n`;
+      template += `${whitespace(baseIdent + 2)}<${realDomName}${addAttribute(domName, data[domName], counter)}\n${whitespace(baseIdent + 2)}/>\n`;
     } else if (Array.isArray(data[domName])) {
       data[domName].forEach((sub) => {
-        template += `${whitespace(baseIdent + 2)}<${realDomName}${addAttribute(sub, counter)} />\n`;
+        template += `${whitespace(baseIdent + 2)}<${realDomName}${addAttribute(domName, sub, counter)}\n${whitespace(baseIdent + 2)}/>\n`;
       });
     }
   }
@@ -158,16 +161,22 @@ const generateCase = (data: XmlData['svg']['symbol'][number], baseIdent: number)
   return template;
 };
 
-const addAttribute = (sub: XmlData['svg']['symbol'][number]['path'][number], counter: { colorIndex: number }) => {
+const addAttribute = (domName: string, sub: XmlData['svg']['symbol'][number]['path'][number], counter: { colorIndex: number, baseIdent: number }) => {
   let template = '';
 
   if (sub && sub.$) {
+    if (ATTRIBUTE_FILL_MAP.includes(domName)) {
+      // Set default color same as in iconfont.cn
+      // And create placeholder to inject color by user's behavior
+      sub.$.fill = sub.$.fill || '#333333';
+    }
+
     for (const attributeName of Object.keys(sub.$)) {
       if (attributeName === 'fill') {
-        template += ` ${attributeName}={color ? typeof color === 'string' && color || color[${counter.colorIndex}] || '${sub.$[attributeName]}' : '${sub.$[attributeName]}'}`;
+        template += `\n${whitespace(counter.baseIdent + 4)}${attributeName}={color ? typeof color === 'string' && color || color[${counter.colorIndex}] || '${sub.$[attributeName]}' : '${sub.$[attributeName]}'}`;
         counter.colorIndex += 1;
       } else {
-        template += ` ${attributeName}="${sub.$[attributeName]}"`;
+        template += `\n${whitespace(counter.baseIdent + 4)}${attributeName}="${sub.$[attributeName]}"`;
       }
     }
   }

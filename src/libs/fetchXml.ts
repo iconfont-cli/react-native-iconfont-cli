@@ -12,6 +12,7 @@ export interface XmlData {
       path: Array<{
         $: {
           d: string;
+          fill?: string;
         };
       }>;
     }>;
