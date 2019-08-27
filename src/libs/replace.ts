@@ -14,6 +14,15 @@ export const replaceNames = (content: string, names: string[]) => {
   return content.replace(/#names#/g, names.join(`' | '`));
 };
 
+export const replaceNamesArray = (content: string, names: string[]) => {
+  return content.replace(
+    /#namesArray#/g,
+    JSON.stringify(names)
+      .replace(/"/g, '\'')
+      .replace(/','/g, '\', \'')
+  );
+};
+
 export const replaceComponentName = (content: string, name: string) => {
   return content.replace(/#componentName#/g, name);
 };

@@ -72,7 +72,7 @@ cd ios && pod install
 我们将为每个生成的图标组件加入默认的字体大小，当然，你也可以通过传入props的方式改变这个size值。
 
 ### use_typescript
-这个选项将决定生成的图标组件是`.tsx`还是`.jsx`后缀。如果该值为false，我们将为您生成`.jsx`和`.d.ts`文件，以确保您能享受到最好的书写体验。
+是否使用typescript格式的文件。这个选项将决定生成的图标组件是`.tsx`还是`.jsx`后缀。
 
 
 # Step 4

@@ -9,7 +9,7 @@ import { getConfig } from './getConfig';
 import { getTemplate } from './getTemplate';
 import {
   replaceCases,
-  replaceComponentName, replaceNames,
+  replaceComponentName, replaceNames, replaceNamesArray,
   replaceSingleIconContent,
   replaceSize,
   replaceSvgComponents,
@@ -72,11 +72,6 @@ export const generateComponent = (data: XmlData) => {
       singleFile = replaceSingleIconContent(singleFile, generateCase(item, 4));
 
       fs.writeFileSync(path.join(saveDir, componentName + '.jsx'), singleFile);
-
-      let definitionFile = getTemplate('SingleIcon.d.ts');
-
-      definitionFile = replaceComponentName(definitionFile, componentName);
-      fs.writeFileSync(path.join(saveDir, componentName + '.d.ts'), definitionFile);
     }
   });
 
@@ -98,13 +93,9 @@ export const generateComponent = (data: XmlData) => {
     iconFile = replaceCases(iconFile, cases);
     iconFile = replaceSvgComponents(iconFile, svgComponents);
     iconFile = replaceNames(iconFile, names);
+    iconFile = replaceNamesArray(iconFile, names);
 
     fs.writeFileSync(path.join(saveDir, 'Icon.jsx'), iconFile);
-
-    let definitionFile = getTemplate('Icon.d.ts');
-
-    definitionFile = replaceNames(definitionFile, names);
-    fs.writeFileSync(path.join(saveDir, 'Icon.d.ts'), definitionFile);
   }
 
   console.log(colors.green('\nDone!\n'));
