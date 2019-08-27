@@ -135,6 +135,7 @@ export const App = () => {
 ```typescript jsx
 <Icon name="alipay" size={20} />
 ```
+![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/images/default-color-icon.png?raw=true)
 ### 图标单色
 单色图标，如果不指定颜色值，图标将渲染原本的颜色。如果你想设置为其他的颜色，那么设置一个你想要的颜色即可
 ```typescript jsx
