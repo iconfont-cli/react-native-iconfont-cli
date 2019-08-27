@@ -52,7 +52,7 @@ cd ios && pod install
     "generate_mode": "all-in-one",
     "safe_dir": "./src/components/iconfont",
     "trim_icon_prefix": "icon-",
-    "default_font_size": 18
+    "default_icon_size": 18
 }
 ```
 ### 配置参数说明：
@@ -81,7 +81,7 @@ cd ios && pod install
 
 注意，这个选项只针对 `<Icon />` 组件有效
 
-### default_font_size
+### default_icon_size
 我们将为每个生成的图标组件加入默认的字体大小，当然，你也可以通过传入props的方式改变这个size值。
 
 

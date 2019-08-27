@@ -75,7 +75,7 @@ export const generateComponent = (data: XmlData) => {
     cases += `${whitespace(6)}return <${componentName} size={size} color={color} />;\n`;
 
     singleFile = getTemplate('SingleIcon' + extension);
-    singleFile = replaceSize(singleFile, config.default_font_size);
+    singleFile = replaceSize(singleFile, config.default_icon_size);
     singleFile = replaceSvgComponents(singleFile, currentSvgComponents);
     singleFile = replaceComponentName(singleFile, componentName);
     singleFile = replaceSingleIconContent(singleFile, generateCase(item, 4));
@@ -100,7 +100,7 @@ export const generateComponent = (data: XmlData) => {
 
   let iconFile =  getTemplate('Icon' + extension);
 
-  iconFile = replaceSize(iconFile, config.default_font_size);
+  iconFile = replaceSize(iconFile, config.default_icon_size);
   iconFile = replaceCases(iconFile, cases);
   iconFile = replaceSvgComponents(iconFile, svgComponents);
   iconFile = replaceImports(iconFile, imports);

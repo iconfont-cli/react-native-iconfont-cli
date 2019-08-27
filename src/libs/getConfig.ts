@@ -30,7 +30,7 @@ export const getConfig = () => {
   }
 
   config.safe_dir = config.safe_dir || defaultConfig.safe_dir;
-  config.default_font_size = config.default_font_size || defaultConfig.default_font_size;
+  config.default_icon_size = config.default_icon_size || defaultConfig.default_icon_size;
 
   if (!Object.values(GENERATE_MODE).includes(config.generate_mode)) {
     console.warn(colors.red(`Property generate_mode should be only one of ${JSON.stringify(Object.values(GENERATE_MODE))}`));
