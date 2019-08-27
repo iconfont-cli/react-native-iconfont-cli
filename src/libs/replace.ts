@@ -1,3 +1,5 @@
+import { GENERATE_MODE } from './generateMode';
+
 export const replaceSize = (content: string, size: number) => {
   return content.replace(/#size#/g, String(size));
 };
@@ -45,13 +47,15 @@ export const replaceImports = (content: string, imports: string[]) => {
 export const replaceToOneComments = (content: string) => {
   return content.replace(/#comments#/g,
     '// If you don\'t like lots of icon files in your project,\n' +
-    '// try to set generate_mode to `all-in-one` in root file `iconfont.json`.\n' +
-    '// And then regenerate icons by using cli command.');
+    `// try to set generate_mode to "${GENERATE_MODE.allInOne}" in root file "iconfont.json".\n` +
+    '// And then regenerate icons by using cli command.'
+  );
 };
 
 export const replaceToDependsComments = (content: string) => {
   return content.replace(/#comments#/g,
     '// If you don\'t want to make all icons in one file,\n' +
-    '// try to set generate_mode to `depends-on` in root file `iconfont.json`.\n' +
-    '// And then regenerate icons by using cli command.');
+    `// try to set generate_mode to "${GENERATE_MODE.dependsOn}" in root file "iconfont.json".\n` +
+    '// And then regenerate icons by using cli command.'
+  );
 };

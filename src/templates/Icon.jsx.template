@@ -2,22 +2,16 @@
 /* eslint-disable */
 
 import React from 'react';
-import { number, oneOf } from 'prop-types';
 #svgComponents#
 #imports#
 
 #comments#
-const Icon = ({ size, name }) => {
+const Icon = ({ color, name, size }) => {
   switch (name) {
 #cases#
   }
 
   return null;
-};
-
-Icon.propTypes = {
-  size: number,
-  name: oneOf(#namesArray#),
 };
 
 Icon.defaultProps = {

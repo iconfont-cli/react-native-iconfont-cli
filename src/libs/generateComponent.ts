@@ -46,7 +46,6 @@ export const generateComponent = (data: XmlData) => {
       : iconId;
     const componentName = upperFirst(camelCase(iconId));
 
-
     names.push(iconIdAfterTrim);
 
     for (const domName of Object.keys(item)) {
@@ -71,7 +70,7 @@ export const generateComponent = (data: XmlData) => {
     }
 
     imports.push(componentName);
-    cases += `${whitespace(6)}return <${componentName} size={size} />;\n`;
+    cases += `${whitespace(6)}return <${componentName} size={size} color={color} />;\n`;
 
     singleFile = getTemplate('SingleIcon' + extension);
     singleFile = replaceSize(singleFile, config.default_font_size);
@@ -87,6 +86,13 @@ export const generateComponent = (data: XmlData) => {
 
     fs.writeFileSync(path.join(saveDir, componentName + extension), singleFile);
 
+    if (!config.use_typescript) {
+      let typeDefinitionFile = getTemplate('SingleIcon.d.ts');
+
+      typeDefinitionFile = replaceComponentName(typeDefinitionFile, componentName);
+      fs.writeFileSync(path.join(saveDir, componentName + '.d.ts'), typeDefinitionFile);
+    }
+
     console.log(`${colors.green('√')} Generated icon "${colors.yellow(iconId)}"`);
   });
 
@@ -101,6 +107,11 @@ export const generateComponent = (data: XmlData) => {
     iconFile = replaceNames(iconFile, names);
   } else {
     iconFile = replaceNamesArray(iconFile, names);
+
+    let typeDefinitionFile = getTemplate('Icon.d.ts');
+
+    typeDefinitionFile = replaceNames(typeDefinitionFile, names);
+    fs.writeFileSync(path.join(saveDir, 'Icon.d.ts'), typeDefinitionFile);
   }
 
   if (config.generate_mode === GENERATE_MODE.allInOne) {
@@ -120,15 +131,24 @@ const generateCase = (data: XmlData['svg']['symbol'][number], baseIdent: number)
   for (const domName of Object.keys(data)) {
     let realDomName = DOM_MAP[domName];
 
-    if (!realDomName) {
+    if (domName === '$') {
       continue;
     }
 
+    if (!realDomName) {
+      console.error(colors.red(`Unable to transform dom "${domName}"`));
+      process.exit(1);
+    }
+
+    const counter = {
+      colorIndex: 0,
+    };
+
     if (data[domName].$) {
-      template += `${whitespace(baseIdent + 2)}<${realDomName} ${addAttribute(data[domName])} />\n`;
+      template += `${whitespace(baseIdent + 2)}<${realDomName}${addAttribute(data[domName], counter)} />\n`;
     } else if (Array.isArray(data[domName])) {
       data[domName].forEach((sub) => {
-        template += `${whitespace(baseIdent + 2)}<${realDomName} ${addAttribute(sub)} />\n`;
+        template += `${whitespace(baseIdent + 2)}<${realDomName}${addAttribute(sub, counter)} />\n`;
       });
     }
   }
@@ -138,12 +158,17 @@ const generateCase = (data: XmlData['svg']['symbol'][number], baseIdent: number)
   return template;
 };
 
-const addAttribute = (sub: XmlData['svg']['symbol'][number]['path'][number]) => {
+const addAttribute = (sub: XmlData['svg']['symbol'][number]['path'][number], counter: { colorIndex: number }) => {
   let template = '';
 
   if (sub && sub.$) {
     for (const attributeName of Object.keys(sub.$)) {
-      template += ` ${attributeName}="${sub.$[attributeName]}"`;
+      if (attributeName === 'fill') {
+        template += ` ${attributeName}={color ? typeof color === 'string' && color || color[${counter.colorIndex}] || '${sub.$[attributeName]}' : '${sub.$[attributeName]}'}`;
+        counter.colorIndex += 1;
+      } else {
+        template += ` ${attributeName}="${sub.$[attributeName]}"`;
+      }
     }
   }
 

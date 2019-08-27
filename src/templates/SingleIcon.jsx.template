@@ -2,16 +2,11 @@
 /* eslint-disable */
 
 import React from 'react';
-import { number } from 'prop-types';
 #svgComponents#
 
 #comments#
-const #componentName# = ({ size }) => {
+const #componentName# = ({ size, color }) => {
   return (#iconContent#  );
-};
-
-#componentName#.propTypes = {
-  size: number,
 };
 
 #componentName#.defaultProps = {

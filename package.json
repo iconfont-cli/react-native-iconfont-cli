@@ -1,8 +1,15 @@
 {
   "name": "react-native-iconfont-cli",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
-  "keywords": ["iconfont", "react-native", "react-native-iconfont", "icon", "icons", "iconfont.cn"],
+  "keywords": [
+    "iconfont",
+    "react-native",
+    "react-native-iconfont",
+    "icon",
+    "icons",
+    "iconfont.cn"
+  ],
   "repository": "git@github.com:fwh1990/react-native-iconfont-cli.git",
   "author": "范文华 <531362022@qq.com>",
   "license": "MIT",
@@ -21,7 +28,6 @@
     "lodash": "^4.17.15",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
-    "prop-types": "^15.7.2",
     "tslib": "^1.10.0",
     "xml2js": "^0.4.19"
   },
@@ -31,7 +37,6 @@
     "@types/minimist": "^1.2.0",
     "@types/mkdirp": "^0.5.2",
     "@types/node": "^12.7.2",
-    "@types/prop-types": "^15.7.1",
     "@types/react": "^16.9.2",
     "@types/xml2js": "^0.4.4",
     "react": "^16.9.0",

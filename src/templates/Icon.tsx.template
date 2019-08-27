@@ -7,11 +7,12 @@ import React, { FunctionComponent } from 'react';
 
 interface Props {
   size?: number;
+  color?: string | string[];
   name: '#names#';
 }
 
 #comments#
-const Icon: FunctionComponent<Props> = ({ size, name }) => {
+const Icon: FunctionComponent<Props> = ({ color, name, size }) => {
   switch (name) {
 #cases#
   }

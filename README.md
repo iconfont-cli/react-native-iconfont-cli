@@ -64,11 +64,13 @@ cd ios && pod install
 ### use_typescript
 如果您的项目使用Typescript编写，请设置为true。这个选项将决定生成的图标组件是`.tsx`还是`.jsx`后缀。
 
+当该值为false时，我们会为您的图标生成`.jsx`和`.d.ts`两个文件，以便您能享受到最好的开发体验。
+
 ### generate_mode
 生成组件的方式：
-##### all-in-one
+##### 1、all-in-one
 只生成一个`<Icon name="xxx" />` 组件，里面包含了所有图标信息。所以这个组件会比较大。
-##### depends-on
+##### 2、depends-on
 每个图标都会生成一个组件`<IconXXX />`。这种模式也会生成一个`Icon`组件，但和all-in-one不同的是，这个Icon组件总是import其他的图标组件，它相当于一个门面。
 
 ### safe_dir
@@ -91,7 +93,9 @@ cd ios && pod install
 生成后查看您设置的保存目录中是否含有所有的图标
 
 # Step 5
-使用这些图标。现在我们提供了两种引入方式供您选择：
+使用这些图标。
+<br />
+现在我们提供了两种引入方式供您选择：
 
 1、使用汇总`Icon`组件：
 ```typescript jsx
@@ -122,6 +126,28 @@ export const App = () => {
   );
 };
 ```
+
+# 使用
+### 图标尺寸
+根据配置`default_icon_size`，每个图标都会有一个默认的尺寸，你可以随时覆盖。
+```typescript jsx
+<Icon name="user" size={20} />
+```
+### 图标单色
+单色图标，如果不指定颜色值，图标将渲染原本的颜色。如果你想设置为其他的颜色，那么设置一个你想要的颜色即可
+```typescript jsx
+<Icon name="user" color="#ff0000" />
+
+<Icon name="user" color="#red" />
+```
+### 图标多色彩
+多色彩的图标，如果不指定颜色值，图标将渲染原本的多色彩。如果你想设置为其他的颜色，那么设置一组你想要的颜色即可
+```typescript jsx
+<Icon name="user" color={['#ff0000', 'green']} />
+```
+颜色组的数量以及排序，需要根据当前图标的信息来确定。您需要进入图标组件中查看并得出结论。
+
+**注意：如果color是字符串而不是数组，那么即使是多色彩图标，也会变成单色图标。**
 
 # 更新图标
 当您在iconfont.cn中的图标有变更时，只需更改配置`symbol_url`，然后再次执行`Step 4`即可生成最新的图标组件

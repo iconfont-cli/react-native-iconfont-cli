@@ -6,10 +6,11 @@ import React, { FunctionComponent } from 'react';
 
 interface Props {
   size?: number;
+  color?: string | string[];
 }
 
 #comments#
-const #componentName#: FunctionComponent<Props> = ({ size }) => {
+const #componentName#: FunctionComponent<Props> = ({ size, color }) => {
   return (#iconContent#  );
 };
 
