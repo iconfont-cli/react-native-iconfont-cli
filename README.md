@@ -48,7 +48,7 @@ cd ios && pod install
 ```json
 {
   "symbol_url": "复制官网提供的JS链接",
-  "safe_dir": "./src/iconfont",
+  "safe_dir": "./src/components/iconfont",
   "trim_icon_prefix": "icon-",
   "default_font_size": 18,
   "use_typescript": false

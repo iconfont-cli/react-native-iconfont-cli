@@ -38,8 +38,6 @@ export const generateComponent = (data: XmlData) => {
       : iconId;
     const componentName = upperFirst(camelCase(iconId));
 
-    console.log(`Generating icon "${colors.green(iconId)}"...`);
-
     names.push(iconIdAfterTrim);
 
     for (const domName of Object.keys(item)) {
@@ -73,9 +71,9 @@ export const generateComponent = (data: XmlData) => {
 
       fs.writeFileSync(path.join(saveDir, componentName + '.jsx'), singleFile);
     }
-  });
 
-  console.log(`Generating all icons in one...`);
+    console.log(`${colors.green('√')} Generated icon "${colors.yellow(iconId)}"`);
+  });
 
   let iconFile: string;
 
@@ -98,7 +96,7 @@ export const generateComponent = (data: XmlData) => {
     fs.writeFileSync(path.join(saveDir, 'Icon.jsx'), iconFile);
   }
 
-  console.log(colors.green('\nDone!\n'));
+  console.log(`\n${colors.green('√')} You will find all icons in dir: ${colors.green(config.safe_dir)}\n`);
 };
 
 const generateCase = (data: XmlData['svg']['symbol'][number], baseIdent: number) => {
