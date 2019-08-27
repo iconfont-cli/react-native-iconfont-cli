@@ -3,8 +3,9 @@
 
 import React from 'react';
 import { number } from 'prop-types';
-import { #svgComponents# } from 'react-native-svg';
+#svgComponents#
 
+#comments#
 const #componentName# = ({ size }) => {
   return (#iconContent#  );
 };

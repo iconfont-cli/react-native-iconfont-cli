@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import colors from 'colors';
 import defaultConfig from './iconfont.json';
+import { GENERATE_MODE } from './generateMode';
 
 let cacheConfig: typeof defaultConfig;
 
@@ -20,7 +21,7 @@ export const getConfig = () => {
   const config = require(targetFile) as typeof defaultConfig;
 
   if (!config.symbol_url || !/^(https?:)?\/\//.test(config.symbol_url)) {
-    console.warn(colors.red('You don\'t provide valid symbol url from iconfont.cn'));
+    console.warn(colors.red('You don\'t provide valid symbol_url from iconfont.cn'));
     process.exit(1);
   }
 
@@ -30,6 +31,11 @@ export const getConfig = () => {
 
   config.safe_dir = config.safe_dir || defaultConfig.safe_dir;
   config.default_font_size = config.default_font_size || defaultConfig.default_font_size;
+
+  if (!Object.values(GENERATE_MODE).includes(config.generate_mode)) {
+    console.warn(colors.red(`Property generate_mode should be only one of ${JSON.stringify(Object.values(GENERATE_MODE))}`));
+    process.exit(1);
+  }
 
   cacheConfig = config;
 

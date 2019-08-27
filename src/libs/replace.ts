@@ -7,7 +7,14 @@ export const replaceCases = (content: string, cases: string) => {
 };
 
 export const replaceSvgComponents = (content: string, components: Set<string>) => {
-  return content.replace(/#svgComponents#/g, [...components].join(', '));
+  const used = Array.from(components);
+
+  return content.replace(
+    /#svgComponents#/g,
+    used.length
+      ? `import { ${used.join(', ')} } from 'react-native-svg';`
+      : ''
+  );
 };
 
 export const replaceNames = (content: string, names: string[]) => {
@@ -29,4 +36,22 @@ export const replaceComponentName = (content: string, name: string) => {
 
 export const replaceSingleIconContent = (content: string, render: string) => {
   return content.replace(/#iconContent#/g, render);
+};
+
+export const replaceImports = (content: string, imports: string[]) => {
+  return content.replace(/#imports#/g, imports.map((item) => `import ${item} from './${item}';`).join('\n'));
+};
+
+export const replaceToOneComments = (content: string) => {
+  return content.replace(/#comments#/g,
+    '// If you don\'t like lots of icon files in your project,\n' +
+    '// try to set generate_mode to `all-in-one` in root file `iconfont.json`.\n' +
+    '// And then regenerate icons by using cli command.');
+};
+
+export const replaceToDependsComments = (content: string) => {
+  return content.replace(/#comments#/g,
+    '// If you don\'t want to make all icons in one file,\n' +
+    '// try to set generate_mode to `depends-on` in root file `iconfont.json`.\n' +
+    '// And then regenerate icons by using cli command.');
 };

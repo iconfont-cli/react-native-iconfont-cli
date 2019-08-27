@@ -2,13 +2,15 @@
 /* eslint-disable */
 
 import React, { FunctionComponent } from 'react';
-import { #svgComponents# } from 'react-native-svg';
+#svgComponents#
+#imports#
 
 interface Props {
   size?: number;
   name: '#names#';
 }
 
+#comments#
 const Icon: FunctionComponent<Props> = ({ size, name }) => {
   switch (name) {
 #cases#

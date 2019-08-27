@@ -2,12 +2,13 @@
 /* eslint-disable */
 
 import React, { FunctionComponent } from 'react';
-import { #svgComponents# } from 'react-native-svg';
+#svgComponents#
 
 interface Props {
   size?: number;
 }
 
+#comments#
 const #componentName#: FunctionComponent<Props> = ({ size }) => {
   return (#iconContent#  );
 };

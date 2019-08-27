@@ -3,8 +3,10 @@
 
 import React from 'react';
 import { number, oneOf } from 'prop-types';
-import { #svgComponents# } from 'react-native-svg';
+#svgComponents#
+#imports#
 
+#comments#
 const Icon = ({ size, name }) => {
   switch (name) {
 #cases#

@@ -47,11 +47,12 @@ cd ios && pod install
 此时项目根目录会生成一个`iconfont.json`的文件，内容如下：
 ```json
 {
-  "symbol_url": "复制官网提供的JS链接",
-  "safe_dir": "./src/components/iconfont",
-  "trim_icon_prefix": "icon-",
-  "default_font_size": 18,
-  "use_typescript": false
+    "symbol_url": "请参考README.md，复制官网提供的JS链接",
+    "use_typescript": false,
+    "generate_mode": "all-in-one",
+    "safe_dir": "./src/components/iconfont",
+    "trim_icon_prefix": "icon-",
+    "default_font_size": 18
 }
 ```
 ### 配置参数说明：
@@ -59,6 +60,16 @@ cd ios && pod install
 请直接复制[iconfont](http://iconfont.cn)官网提供的项目链接。请务必看清是`.js`后缀而不是.css后缀。
 <br />
 ![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/symbol-url.png?raw=true)
+
+### use_typescript
+如果您的项目使用Typescript编写，请设置为true。这个选项将决定生成的图标组件是`.tsx`还是`.jsx`后缀。
+
+### generate_mode
+生成组件的方式：
+##### all-in-one
+只生成一个`<Icon name="xxx" />` 组件，里面包含了所有图标信息。所以这个组件会比较大。
+##### depends-on
+每个图标都会生成一个组件`<IconXXX />`。这种模式也会生成一个`Icon`组件，但和all-in-one不同的是，这个Icon组件总是import其他的图标组件，它相当于一个门面。
 
 ### safe_dir
 根据iconfont图标生成的组件存放的位置。每次生成组件之前，该文件夹都会被清空。
@@ -71,9 +82,6 @@ cd ios && pod install
 ### default_font_size
 我们将为每个生成的图标组件加入默认的字体大小，当然，你也可以通过传入props的方式改变这个size值。
 
-### use_typescript
-是否使用typescript格式的文件。这个选项将决定生成的图标组件是`.tsx`还是`.jsx`后缀。
-
 
 # Step 4
 开始生成React组件
@@ -85,7 +93,7 @@ cd ios && pod install
 # Step 5
 使用这些图标。现在我们提供了两种引入方式供您选择：
 
-1、使用汇总 `<Icon />`，它包含了所有的图标信息：
+1、使用汇总`Icon`组件：
 ```typescript jsx
 import Icon from '../src/iconfont/Icon';
 
@@ -99,7 +107,7 @@ export const App = () => {
 };
 ```
 
-2、使用单个图标，它更加精准，您上线时打出来的包也会更小：
+2、当您配置的`generate_mode=depends-on`时，您可以使用单个图标。这样可以避免没用到的图标也打包进App：
 
 ```typescript jsx
 import IconUser from '../src/iconfont/IconUser';
