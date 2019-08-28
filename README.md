@@ -13,6 +13,8 @@
 
 为了解决这些问题，我用纯Javascript实现iconfont到React组件的转换操作，**不需要依赖ttf字体文件**，不需要手动下载图标到本地。
 
+![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/images/icons.png?raw=true)
+
 ## 特性
 
 1、纯组件
