@@ -60,7 +60,7 @@ cd ios && pod install
     "symbol_url": "请参考README.md，复制官网提供的JS链接",
     "use_typescript": false,
     "generate_mode": "all-in-one",
-    "safe_dir": "./src/components/iconfont",
+    "save_dir": "./src/components/iconfont",
     "trim_icon_prefix": "icon-",
     "default_icon_size": 18
 }
@@ -85,7 +85,7 @@ cd ios && pod install
 ##### 2、depends-on
 每个图标都会生成一个组件`<IconXXX />`。这种模式也会生成一个`Icon`组件，但和all-in-one不同的是，这个Icon组件总是import其他的图标组件，它相当于一个门面。
 
-### safe_dir
+### save_dir
 根据iconfont图标生成的组件存放的位置。每次生成组件之前，该文件夹都会被清空。
 
 ### trim_icon_prefix

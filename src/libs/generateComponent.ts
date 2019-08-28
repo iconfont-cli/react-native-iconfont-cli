@@ -28,7 +28,7 @@ export const generateComponent = (data: XmlData) => {
   const svgComponents: Set<string> = new Set();
   const names: string[] = [];
   const imports: string[] = [];
-  const saveDir = path.resolve(config.safe_dir);
+  const saveDir = path.resolve(config.save_dir);
   const extension = config.use_typescript ? '.tsx' : '.jsx';
   let cases: string = '';
 
@@ -124,7 +124,7 @@ export const generateComponent = (data: XmlData) => {
 
   fs.writeFileSync(path.join(saveDir, 'Icon' + extension), iconFile);
 
-  console.log(`\n${colors.green('√')} You will find all icons in dir: ${colors.green(config.safe_dir)}\n`);
+  console.log(`\n${colors.green('√')} You will find all icons in dir: ${colors.green(config.save_dir)}\n`);
 };
 
 const generateCase = (data: XmlData['svg']['symbol'][number], baseIdent: number) => {

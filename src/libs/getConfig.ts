@@ -29,7 +29,7 @@ export const getConfig = () => {
     config.symbol_url = 'http:' + config.symbol_url;
   }
 
-  config.safe_dir = config.safe_dir || defaultConfig.safe_dir;
+  config.save_dir = config.save_dir || defaultConfig.save_dir;
   config.default_icon_size = config.default_icon_size || defaultConfig.default_icon_size;
 
   if (!Object.values(GENERATE_MODE).includes(config.generate_mode)) {
