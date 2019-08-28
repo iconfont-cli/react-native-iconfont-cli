@@ -5,14 +5,19 @@ import glob from 'glob';
 import colors from 'colors';
 import { camelCase, upperFirst } from 'lodash';
 import { XmlData } from './fetchXml';
-import { getConfig } from './getConfig';
+import { Config } from './getConfig';
 import { getTemplate } from './getTemplate';
 import {
   replaceCases,
-  replaceComponentName, replaceImports, replaceNames, replaceNamesArray,
+  replaceComponentName,
+  replaceImports,
+  replaceNames,
+  replaceNamesArray,
   replaceSingleIconContent,
   replaceSize,
-  replaceSvgComponents, replaceToDependsComments, replaceToOneComments,
+  replaceSvgComponents,
+  replaceToDependsComments,
+  replaceToOneComments,
 } from './replace';
 import { whitespace } from './whitespace';
 import { GENERATE_MODE } from './generateMode';
@@ -23,8 +28,7 @@ const SVG_MAP = {
 
 const ATTRIBUTE_FILL_MAP = ['path'];
 
-export const generateComponent = (data: XmlData) => {
-  const config = getConfig();
+export const generateComponent = (data: XmlData, config: Config) => {
   const svgComponents: Set<string> = new Set();
   const names: string[] = [];
   const imports: string[] = [];
@@ -68,6 +72,7 @@ export const generateComponent = (data: XmlData) => {
 
     if (config.generate_mode === GENERATE_MODE.allInOne) {
       cases += `${whitespace(6)}return (${generateCase(item, 8)}${whitespace(6)});\n`;
+
       return;
     }
 
@@ -79,12 +84,7 @@ export const generateComponent = (data: XmlData) => {
     singleFile = replaceSvgComponents(singleFile, currentSvgComponents);
     singleFile = replaceComponentName(singleFile, componentName);
     singleFile = replaceSingleIconContent(singleFile, generateCase(item, 4));
-
-    if (config.generate_mode === GENERATE_MODE.allInOne) {
-      singleFile = replaceToDependsComments(singleFile);
-    } else {
-      singleFile = replaceToOneComments(singleFile);
-    }
+    singleFile = replaceToOneComments(singleFile);
 
     fs.writeFileSync(path.join(saveDir, componentName + extension), singleFile);
 
@@ -124,7 +124,7 @@ export const generateComponent = (data: XmlData) => {
 
   fs.writeFileSync(path.join(saveDir, 'Icon' + extension), iconFile);
 
-  console.log(`\n${colors.green('√')} You will find all icons in dir: ${colors.green(config.save_dir)}\n`);
+  console.log(`\n${colors.green('√')} All icons have putted into dir: ${colors.green(config.save_dir)}\n`);
 };
 
 const generateCase = (data: XmlData['svg']['symbol'][number], baseIdent: number) => {

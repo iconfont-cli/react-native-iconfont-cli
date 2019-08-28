@@ -4,7 +4,16 @@ import colors from 'colors';
 import defaultConfig from './iconfont.json';
 import { GENERATE_MODE } from './generateMode';
 
-let cacheConfig: typeof defaultConfig;
+export interface Config {
+  symbol_url: string;
+  use_typescript: boolean;
+  save_dir: string;
+  generate_mode: GENERATE_MODE;
+  trim_icon_prefix: string;
+  default_icon_size: number;
+}
+
+let cacheConfig: Config;
 
 export const getConfig = () => {
   if (cacheConfig) {
@@ -18,10 +27,10 @@ export const getConfig = () => {
     process.exit(1);
   }
 
-  const config = require(targetFile) as typeof defaultConfig;
+  const config = require(targetFile) as Config;
 
   if (!config.symbol_url || !/^(https?:)?\/\//.test(config.symbol_url)) {
-    console.warn(colors.red('You don\'t provide valid symbol_url from iconfont.cn'));
+    console.warn(colors.red('You are required to provide symbol_url'));
     process.exit(1);
   }
 

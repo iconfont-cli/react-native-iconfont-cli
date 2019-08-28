@@ -59,8 +59,8 @@ cd ios && pod install
 {
     "symbol_url": "请参考README.md，复制官网提供的JS链接",
     "use_typescript": false,
-    "generate_mode": "all-in-one",
     "save_dir": "./src/iconfont",
+    "generate_mode": "all-in-one",
     "trim_icon_prefix": "icon-",
     "default_icon_size": 18
 }
