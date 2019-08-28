@@ -1,6 +1,8 @@
 ## react-native-iconfont-cli
 用纯JS把iconfont.cn的图标转换成RN组件，不依赖字体，支持多色彩，支持热更新
 
+![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/images/icons.png?raw=true)
+
 ## 痛点
 
 通常地，当我们想在RN里使用iconfont，我们可能会借助`react-native-vector-icons`导入ttf字体文件，或者直接手动下载各个svg文件到本地，然后单个使用。
@@ -12,8 +14,6 @@
 --------
 
 为了解决这些问题，我用纯Javascript实现iconfont到React组件的转换操作，**不需要依赖ttf字体文件**，不需要手动下载图标到本地。
-
-![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/images/icons.png?raw=true)
 
 ## 特性
 
