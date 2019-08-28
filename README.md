@@ -68,6 +68,9 @@ cd ios && pod install
 ### 配置参数说明：
 ### symbol_url
 请直接复制[iconfont](http://iconfont.cn)官网提供的项目链接。请务必看清是`.js`后缀而不是.css后缀。
+
+如果你现在还没有创建iconfont的仓库，那么可以填入这个链接去测试：`http://at.alicdn.com/t/font_1373348_kk9y3jk2omq.js`
+
 <br />
 ![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/images/symbol-url.png?raw=true)
 
@@ -114,8 +117,8 @@ import Icon from '../src/components/iconfont/Icon';
 export const App = () => {
   return (
     <div>
-      <Icon name="user" size={20} />
-      <Icon name="sky" />
+      <Icon name="alipay" size={20} />
+      <Icon name="wechat" />
     </div>
   );
 };
@@ -124,14 +127,14 @@ export const App = () => {
 2、当您配置的`generate_mode=depends-on`时，您可以使用单个图标。这样可以避免没用到的图标也打包进App：
 
 ```typescript jsx
-import IconUser from '../src/components/iconfont/IconUser';
-import IconSky from '../src/components/iconfont/IconSky';
+import IconAlipay from '../src/components/iconfont/IconAlipay';
+import IconWechat from '../src/components/iconfont/IconWechat';
 
 export const App = () => {
   return (
     <div>
-      <IconUser size={20} />
-      <IconSky />
+      <IconAlipay size={20} />
+      <IconWechat />
     </div>
   );
 };
@@ -153,7 +156,7 @@ export const App = () => {
 ### 图标多色彩
 多色彩的图标，如果不指定颜色值，图标将渲染原本的多色彩。如果你想设置为其他的颜色，那么设置一组你想要的颜色即可
 ```typescript jsx
-<Icon name="user" color={['green', 'orange']} />
+<Icon name="alipay" color={['green', 'orange']} />
 ```
 颜色组的数量以及排序，需要根据当前图标的信息来确定。您需要进入图标组件中查看并得出结论。
 ![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/images/multi-color-icon.png?raw=true)
