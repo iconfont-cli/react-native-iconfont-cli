@@ -60,7 +60,7 @@ cd ios && pod install
     "symbol_url": "请参考README.md，复制官网提供的JS链接",
     "use_typescript": false,
     "generate_mode": "all-in-one",
-    "save_dir": "./src/components/iconfont",
+    "save_dir": "./src/iconfont",
     "trim_icon_prefix": "icon-",
     "default_icon_size": 18
 }
@@ -111,7 +111,7 @@ cd ios && pod install
 
 1、使用汇总`Icon`组件：
 ```typescript jsx
-import Icon from '../src/components/iconfont/Icon';
+import Icon from '../src/iconfont/Icon';
 
 export const App = () => {
   return (
@@ -126,8 +126,8 @@ export const App = () => {
 2、当您配置的`generate_mode=depends-on`时，您可以使用单个图标。这样可以避免没用到的图标也打包进App：
 
 ```typescript jsx
-import IconAlipay from '../src/components/iconfont/IconAlipay';
-import IconWechat from '../src/components/iconfont/IconWechat';
+import IconAlipay from '../src/iconfont/IconAlipay';
+import IconWechat from '../src/iconfont/IconWechat';
 
 export const App = () => {
   return (
