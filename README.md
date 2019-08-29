@@ -54,7 +54,7 @@ cd ios && pod install
 # Step 3
 生成配置文件
 ```bash
-./node_modules/.bin/iconfont init
+npx iconfont init
 ```
 此时项目根目录会生成一个`iconfont.json`的文件，内容如下：
 ```json
@@ -102,7 +102,7 @@ cd ios && pod install
 # Step 4
 开始生成React组件
 ```bash
-./node_modules/.bin/iconfont
+npx iconfont
 ```
 生成后查看您设置的保存目录中是否含有所有的图标
 
