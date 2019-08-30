@@ -1,9 +1,12 @@
 import { FunctionComponent } from 'react';
+// Don't forget to install package: @types/react-native
+import { ViewProps } from 'react-native';
+import { GProps } from 'react-native-svg';
 
-interface Props {
+interface Props extends GProps, ViewProps {
+  name: '#names#';
   size?: number;
   color?: string | string[];
-  name: '#names#';
 }
 
 declare const Icon: FunctionComponent<Props>;

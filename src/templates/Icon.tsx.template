@@ -2,19 +2,20 @@
 /* eslint-disable */
 
 import React, { FunctionComponent } from 'react';
+import {ViewProps} from 'react-native';
 #svgComponents#
 #imports#
 
 export type IconNames = '#names#';
 
-interface Props {
+interface Props extends GProps, ViewProps {
+  name: IconNames;
   size?: number;
   color?: string | string[];
-  name: IconNames;
 }
 
 #comments#
-const Icon: FunctionComponent<Props> = ({ color, name, size }) => {
+const Icon: FunctionComponent<Props> = ({ color, name, size, ...rest }) => {
   switch (name) {
 #cases#
   }

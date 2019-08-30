@@ -2,15 +2,16 @@
 /* eslint-disable */
 
 import React, { FunctionComponent } from 'react';
+import { ViewProps } from 'react-native';
 #svgComponents#
 
-interface Props {
+interface Props extends GProps, ViewProps {
   size?: number;
   color?: string | string[];
 }
 
 #comments#
-const #componentName#: FunctionComponent<Props> = ({ size, color }) => {
+const #componentName#: FunctionComponent<Props> = ({ size, color, ...rest }) => {
   return (#iconContent#  );
 };
 

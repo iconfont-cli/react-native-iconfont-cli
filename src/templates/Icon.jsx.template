@@ -6,7 +6,7 @@ import React from 'react';
 #imports#
 
 #comments#
-const Icon = ({ color, name, size }) => {
+const Icon = ({ color, name, size, ...rest }) => {
   switch (name) {
 #cases#
   }

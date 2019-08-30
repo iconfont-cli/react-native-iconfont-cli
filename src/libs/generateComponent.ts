@@ -40,6 +40,10 @@ export const generateComponent = (data: XmlData, config: Config) => {
     svgComponents.add('Svg');
   }
 
+  if (config.use_typescript) {
+    svgComponents.add('GProps');
+  }
+
   mkdirp.sync(saveDir);
   glob.sync(path.join(saveDir, '*')).forEach((file) => fs.unlinkSync(file));
 
@@ -53,6 +57,10 @@ export const generateComponent = (data: XmlData, config: Config) => {
     const componentName = upperFirst(camelCase(iconId));
 
     names.push(iconIdAfterTrim);
+
+    if (config.use_typescript) {
+      currentSvgComponents.add('GProps');
+    }
 
     for (const domName of Object.keys(item)) {
       switch (domName) {
@@ -77,7 +85,7 @@ export const generateComponent = (data: XmlData, config: Config) => {
     }
 
     imports.push(componentName);
-    cases += `${whitespace(6)}return <${componentName} size={size} color={color} />;\n`;
+    cases += `${whitespace(6)}return <${componentName} size={size} color={color} {...rest} />;\n`;
 
     singleFile = getTemplate('SingleIcon' + extension);
     singleFile = replaceSize(singleFile, config.default_icon_size);
@@ -128,7 +136,7 @@ export const generateComponent = (data: XmlData, config: Config) => {
 };
 
 const generateCase = (data: XmlData['svg']['symbol'][number], baseIdent: number) => {
-  let template = `\n${whitespace(baseIdent)}<Svg viewBox="${data.$.viewBox}" width={size} height={size}>\n`;
+  let template = `\n${whitespace(baseIdent)}<Svg viewBox="${data.$.viewBox}" width={size} height={size} {...rest}>\n`;
 
   for (const domName of Object.keys(data)) {
     let realDomName = SVG_MAP[domName];
