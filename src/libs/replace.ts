@@ -71,5 +71,5 @@ export const replaceColorFunc = (content, extension: string) => {
 };
 
 export const replaceNoColor = (content) => {
-  return content.replace(/#colorFunc#?/, '');
+  return content.replace(/#colorFunc#/, '');
 };
