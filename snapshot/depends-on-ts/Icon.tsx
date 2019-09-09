@@ -4,13 +4,11 @@
 import React, { FunctionComponent } from 'react';
 import { ViewProps } from 'react-native';
 import { GProps } from 'react-native-svg';
-import IconWechat from './IconWechat';
 import IconAlipay from './IconAlipay';
-import IconBaidu from './IconBaidu';
-import IconLogout from './IconLogout';
 import IconUser from './IconUser';
+import IconSetup from './IconSetup';
 
-export type IconNames = 'wechat' | 'alipay' | 'baidu' | 'logout' | 'user';
+export type IconNames = 'alipay' | 'user' | 'setup';
 
 interface Props extends GProps, ViewProps {
   name: IconNames;
@@ -23,16 +21,12 @@ interface Props extends GProps, ViewProps {
 // And then regenerate icons by using cli command.
 const Icon: FunctionComponent<Props> = ({ color, name, size, ...rest }) => {
   switch (name) {
-    case 'wechat':
-      return <IconWechat size={size} color={color} {...rest} />;
     case 'alipay':
       return <IconAlipay size={size} color={color} {...rest} />;
-    case 'baidu':
-      return <IconBaidu size={size} color={color} {...rest} />;
-    case 'logout':
-      return <IconLogout size={size} color={color} {...rest} />;
     case 'user':
       return <IconUser size={size} color={color} {...rest} />;
+    case 'setup':
+      return <IconSetup size={size} color={color} {...rest} />;
 
   }
 

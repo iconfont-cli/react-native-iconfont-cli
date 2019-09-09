@@ -6,7 +6,7 @@ import { ViewProps } from 'react-native';
 import { GProps } from 'react-native-svg';
 
 interface Props extends GProps, ViewProps {
-  name: 'wechat' | 'alipay' | 'baidu' | 'logout' | 'user';
+  name: 'alipay' | 'user' | 'setup';
   size?: number;
   color?: string | string[];
 }

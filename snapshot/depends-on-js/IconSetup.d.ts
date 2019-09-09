@@ -10,6 +10,6 @@ interface Props extends GProps, ViewProps {
   color?: string | string[];
 }
 
-declare const IconLogout: FunctionComponent<Props>;
+declare const IconSetup: FunctionComponent<Props>;
 
-export = IconLogout;
+export = IconSetup;
