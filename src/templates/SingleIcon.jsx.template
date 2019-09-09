@@ -2,7 +2,7 @@
 
 import React from 'react';
 #svgComponents#
-import { getColor } from './helper';
+import { getIconColor } from './helper';
 
 #comments#
 const #componentName# = ({ size, color, ...rest }) => {

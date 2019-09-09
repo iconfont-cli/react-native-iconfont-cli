@@ -6,7 +6,7 @@
  * @param {string} defaultColor
  * @return {string}
  */
-export const getColor = (color, index, defaultColor) => {
+export const getIconColor = (color, index, defaultColor) => {
   return color
     ? (
       typeof color === 'string'
