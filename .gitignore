@@ -3,5 +3,5 @@ node_modules/
 .idea/
 build/
 src/iconfont
-./iconfont.json
+/iconfont.json
 .DS_Store
