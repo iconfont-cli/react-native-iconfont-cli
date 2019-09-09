@@ -104,9 +104,6 @@ Icon.defaultProps = {
   size: 16,
 };
 
-/* tslint:disable */
-/* eslint-disable */
-
 const getIconColor = (color: string | string[] | undefined, index: number, defaultColor: string) => {
   return color
     ? (
@@ -116,6 +113,5 @@ const getIconColor = (color: string | string[] | undefined, index: number, defau
     )
     : defaultColor;
 };
-
 
 export default Icon;

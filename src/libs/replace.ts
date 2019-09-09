@@ -64,12 +64,12 @@ export const replaceToDependsComments = (content: string) => {
 export const replaceColorFunc = (content, extension: string) => {
   return content.replace(
     /#colorFunc#/,
-    getTemplate(`helper${extension}`).replace(/export\s+/, '')
+    getTemplate(`helper${extension}`)
+      .replace(/export\s+/, '')
+      .replace(/\/\*\s.+?\s\*\/\n/g, '')
   );
 };
 
 export const replaceNoColor = (content) => {
-  return content
-    .replace(/#importColor#\n?/, '')
-    .replace(/#colorFunc#\n?/, '');
+  return content.replace(/#colorFunc#?/, '');
 };

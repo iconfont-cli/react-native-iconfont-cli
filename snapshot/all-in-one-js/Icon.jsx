@@ -94,8 +94,6 @@ Icon.defaultProps = {
   size: 14,
 };
 
-/* eslint-disable */
-
 /**
  * @param {string | string[] | undefined} color
  * @param {number} index
@@ -111,6 +109,5 @@ const getIconColor = (color, index, defaultColor) => {
     )
     : defaultColor;
 };
-
 
 export default Icon;

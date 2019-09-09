@@ -16,7 +16,5 @@ const Icon = ({ color, name, size, ...rest }) => {
 Icon.defaultProps = {
   size: #size#,
 };
-
 #colorFunc#
-
 export default Icon;
