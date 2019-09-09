@@ -8,11 +8,11 @@ import { XmlData } from './fetchXml';
 import { Config } from './getConfig';
 import { getTemplate } from './getTemplate';
 import {
-  replaceCases,
+  replaceCases, replaceColorFunc,
   replaceComponentName,
   replaceImports,
   replaceNames,
-  replaceNamesArray,
+  replaceNamesArray, replaceNoColor,
   replaceSingleIconContent,
   replaceSize,
   replaceSvgComponents,
@@ -33,8 +33,12 @@ export const generateComponent = (data: XmlData, config: Config) => {
   const names: string[] = [];
   const imports: string[] = [];
   const saveDir = path.resolve(config.save_dir);
-  const extension = config.use_typescript ? '.tsx' : '.jsx';
+  const jsxExtension = config.use_typescript ? '.tsx' : '.jsx';
+  const jsExtension = config.use_typescript ? '.ts' : '.js';
   let cases: string = '';
+
+  mkdirp.sync(saveDir);
+  glob.sync(path.join(saveDir, '*')).forEach((file) => fs.unlinkSync(file));
 
   if (config.generate_mode === GENERATE_MODE.allInOne) {
     svgComponents.add('Svg');
@@ -44,8 +48,12 @@ export const generateComponent = (data: XmlData, config: Config) => {
     svgComponents.add('GProps');
   }
 
-  mkdirp.sync(saveDir);
-  glob.sync(path.join(saveDir, '*')).forEach((file) => fs.unlinkSync(file));
+  if (config.generate_mode === GENERATE_MODE.dependsOn) {
+    fs.copyFileSync(
+      path.join(__dirname, '..', 'templates', `helper${jsExtension}.template`),
+      path.join(saveDir, `helper${jsExtension}`),
+    );
+  }
 
   data.svg.symbol.forEach((item) => {
     let singleFile: string;
@@ -87,14 +95,14 @@ export const generateComponent = (data: XmlData, config: Config) => {
     imports.push(componentName);
     cases += `${whitespace(6)}return <${componentName} size={size} color={color} {...rest} />;\n`;
 
-    singleFile = getTemplate('SingleIcon' + extension);
+    singleFile = getTemplate('SingleIcon' + jsxExtension);
     singleFile = replaceSize(singleFile, config.default_icon_size);
     singleFile = replaceSvgComponents(singleFile, currentSvgComponents);
     singleFile = replaceComponentName(singleFile, componentName);
     singleFile = replaceSingleIconContent(singleFile, generateCase(item, 4));
     singleFile = replaceToOneComments(singleFile);
 
-    fs.writeFileSync(path.join(saveDir, componentName + extension), singleFile);
+    fs.writeFileSync(path.join(saveDir, componentName + jsxExtension), singleFile);
 
     if (!config.use_typescript) {
       let typeDefinitionFile = getTemplate('SingleIcon.d.ts');
@@ -106,7 +114,7 @@ export const generateComponent = (data: XmlData, config: Config) => {
     console.log(`${colors.green('√')} Generated icon "${colors.yellow(iconId)}"`);
   });
 
-  let iconFile =  getTemplate('Icon' + extension);
+  let iconFile =  getTemplate('Icon' + jsxExtension);
 
   iconFile = replaceSize(iconFile, config.default_icon_size);
   iconFile = replaceCases(iconFile, cases);
@@ -126,11 +134,13 @@ export const generateComponent = (data: XmlData, config: Config) => {
 
   if (config.generate_mode === GENERATE_MODE.allInOne) {
     iconFile = replaceToDependsComments(iconFile);
+    iconFile = replaceColorFunc(iconFile, jsExtension);
   } else {
     iconFile = replaceToOneComments(iconFile);
+    iconFile = replaceNoColor(iconFile);
   }
 
-  fs.writeFileSync(path.join(saveDir, 'Icon' + extension), iconFile);
+  fs.writeFileSync(path.join(saveDir, 'Icon' + jsxExtension), iconFile);
 
   console.log(`\n${colors.green('√')} All icons have putted into dir: ${colors.green(config.save_dir)}\n`);
 };
@@ -181,7 +191,7 @@ const addAttribute = (domName: string, sub: XmlData['svg']['symbol'][number]['pa
 
     for (const attributeName of Object.keys(sub.$)) {
       if (attributeName === 'fill') {
-        template += `\n${whitespace(counter.baseIdent + 4)}${attributeName}={color ? typeof color === 'string' && color || color[${counter.colorIndex}] || '${sub.$[attributeName]}' : '${sub.$[attributeName]}'}`;
+        template += `\n${whitespace(counter.baseIdent + 4)}${attributeName}={getColor(color, ${counter.colorIndex}, '${sub.$[attributeName]}')}`;
         counter.colorIndex += 1;
       } else {
         template += `\n${whitespace(counter.baseIdent + 4)}${attributeName}="${sub.$[attributeName]}"`;

@@ -1,4 +1,5 @@
 import { GENERATE_MODE } from './generateMode';
+import { getTemplate } from './getTemplate';
 
 export const replaceSize = (content: string, size: number) => {
   return content.replace(/#size#/g, String(size));
@@ -58,4 +59,17 @@ export const replaceToDependsComments = (content: string) => {
     `// try to set generate_mode to "${GENERATE_MODE.dependsOn}" in root file "iconfont.json".\n` +
     '// And then regenerate icons by using cli command.'
   );
+};
+
+export const replaceColorFunc = (content, extension: string) => {
+  return content.replace(
+    /#colorFunc#/,
+    getTemplate(`helper${extension}`).replace(/export\s+/, '')
+  );
+};
+
+export const replaceNoColor = (content) => {
+  return content
+    .replace(/#importColor#\n?/, '')
+    .replace(/#colorFunc#\n?/, '');
 };

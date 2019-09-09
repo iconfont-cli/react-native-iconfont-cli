@@ -4,3 +4,4 @@ node_modules/
 build/
 src/iconfont
 ./iconfont.json
+.DS_Store

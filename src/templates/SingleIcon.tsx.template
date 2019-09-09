@@ -4,6 +4,7 @@
 import React, { FunctionComponent } from 'react';
 import { ViewProps } from 'react-native';
 #svgComponents#
+import { getColor } from './helper';
 
 interface Props extends GProps, ViewProps {
   size?: number;
@@ -20,6 +21,3 @@ const #componentName#: FunctionComponent<Props> = ({ size, color, ...rest }) => 
 };
 
 export default #componentName#;
-
-/* eslint-enable */
-/* tslint:enable */

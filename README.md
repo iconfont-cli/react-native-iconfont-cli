@@ -83,6 +83,10 @@ npx iconfont init
 ##### 2、depends-on
 每个图标都会生成一个组件`<IconXXX />`。这种模式也会生成一个`Icon`组件，但和all-in-one不同的是，这个Icon组件总是import其他的图标组件，它相当于一个门面。
 
+------
+
+现在，你可以参考[snapshot目录](https://github.com/fwh1990/react-native-iconfont-cli/tree/master/snapshot)的快照文件，以区分不同模式下的图标结构。
+
 ### save_dir
 根据iconfont图标生成的组件存放的位置。每次生成组件之前，该文件夹都会被清空。
 

@@ -1,4 +1,3 @@
-/* tslint:disable */
 /* eslint-disable */
 
 import React from 'react';
@@ -34,7 +33,5 @@ Icon.defaultProps = {
   size: 18,
 };
 
-export default Icon;
 
-/* eslint-enable */
-/* tslint:enable */
+export default Icon;

@@ -43,7 +43,5 @@ Icon.defaultProps = {
   size: 20,
 };
 
-export default Icon;
 
-/* eslint-enable */
-/* tslint:enable */
+export default Icon;
