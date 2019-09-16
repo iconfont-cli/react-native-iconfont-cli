@@ -33,7 +33,7 @@ export const generateComponent = (data: XmlData, config: Config) => {
   const names: string[] = [];
   const imports: string[] = [];
   const saveDir = path.resolve(config.save_dir);
-  const jsxExtension = config.use_typescript ? '.tsx' : '.jsx';
+  const jsxExtension = config.use_typescript ? '.tsx' : '.js';
   const jsExtension = config.use_typescript ? '.ts' : '.js';
   let cases: string = '';
 

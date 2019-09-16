@@ -72,9 +72,9 @@ npx iconfont init
 ![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/images/symbol-url.png?raw=true)
 
 ### use_typescript
-如果您的项目使用Typescript编写，请设置为true。这个选项将决定生成的图标组件是`.tsx`还是`.jsx`后缀。
+如果您的项目使用Typescript编写，请设置为true。这个选项将决定生成的图标组件是`.tsx`还是`.js`后缀。
 
-当该值为false时，我们会为您的图标生成`.jsx`和`.d.ts`两个文件，以便您能享受到最好的开发体验。
+当该值为false时，我们会为您的图标生成`.js`和`.d.ts`两个文件，以便您能享受到最好的开发体验。
 
 ### generate_mode
 生成组件的方式：
