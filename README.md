@@ -85,7 +85,7 @@ npx iconfont init
 
 ------
 
-现在，你可以参考[snapshot目录](https://github.com/fwh1990/react-native-iconfont-cli/tree/master/snapshot)的快照文件，以区分不同模式下的图标结构。
+现在，你可以参考[snapshot目录](https://github.com/fwh1990/react-native-iconfont-cli/tree/master/snapshots)的快照文件，以区分不同模式下的图标结构。
 
 ### save_dir
 根据iconfont图标生成的组件存放的位置。每次生成组件之前，该文件夹都会被清空。
