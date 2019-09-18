@@ -2,7 +2,7 @@
   "symbol_url": "http://at.alicdn.com/t/font_1373348_ghk94ooopqr.js",
   "use_typescript": false,
   "generate_mode": "all-in-one",
-  "save_dir": "./snapshot/all-in-one-js",
+  "save_dir": "./snapshots/all-in-one-js",
   "trim_icon_prefix": "icon-",
   "default_icon_size": 14
 }
