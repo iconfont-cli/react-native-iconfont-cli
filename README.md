@@ -59,7 +59,7 @@ npx iconfont init
     "use_typescript": false,
     "save_dir": "./src/iconfont",
     "generate_mode": "all-in-one",
-    "trim_icon_prefix": "icon-",
+    "trim_icon_prefix": "icon",
     "default_icon_size": 18
 }
 ```

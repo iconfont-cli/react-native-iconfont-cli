@@ -3,6 +3,6 @@
   "use_typescript": true,
   "generate_mode": "depends-on",
   "save_dir": "./snapshots/depends-on-ts",
-  "trim_icon_prefix": "icon-",
+  "trim_icon_prefix": "icon",
   "default_icon_size": 20
 }

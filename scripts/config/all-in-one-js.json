@@ -3,6 +3,6 @@
   "use_typescript": false,
   "generate_mode": "all-in-one",
   "save_dir": "./snapshots/all-in-one-js",
-  "trim_icon_prefix": "icon-",
+  "trim_icon_prefix": "icon",
   "default_icon_size": 14
 }
