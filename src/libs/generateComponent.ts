@@ -14,7 +14,7 @@ import {
   replaceNames,
   replaceNamesArray, replaceNoColor,
   replaceSingleIconContent,
-  replaceSize,
+  replaceSize, replaceSummaryIcon,
   replaceSvgComponents,
   replaceToDependsComments,
   replaceToOneComments,
@@ -132,7 +132,8 @@ export const generateComponent = (data: XmlData, config: Config) => {
     let typeDefinitionFile = getTemplate('Icon.d.ts');
 
     typeDefinitionFile = replaceNames(typeDefinitionFile, names);
-    fs.writeFileSync(path.join(saveDir, 'Icon.d.ts'), typeDefinitionFile);
+    typeDefinitionFile = replaceSummaryIcon(typeDefinitionFile, config.summary_component_name);
+    fs.writeFileSync(path.join(saveDir, config.summary_component_name + '.d.ts'), typeDefinitionFile);
   }
 
   if (config.generate_mode === GENERATE_MODE.allInOne) {
@@ -143,7 +144,9 @@ export const generateComponent = (data: XmlData, config: Config) => {
     iconFile = replaceNoColor(iconFile);
   }
 
-  fs.writeFileSync(path.join(saveDir, 'Icon' + jsxExtension), iconFile);
+  iconFile = replaceSummaryIcon(iconFile, config.summary_component_name);
+
+  fs.writeFileSync(path.join(saveDir, config.summary_component_name + jsxExtension), iconFile);
 
   console.log(`\n${colors.green('√')} All icons have putted into dir: ${colors.green(config.save_dir)}\n`);
 };

@@ -61,15 +61,19 @@ export const replaceToDependsComments = (content: string) => {
   );
 };
 
-export const replaceColorFunc = (content, extension: string) => {
+export const replaceColorFunc = (content: string, extension: string) => {
   return content.replace(
     /#colorFunc#/,
     getTemplate(`helper${extension}`)
-      .replace(/export\s+/, '')
+      .replace(/export\s+/g, '')
       .replace(/\/\*\s.+?\s\*\/\n/g, '')
   );
 };
 
-export const replaceNoColor = (content) => {
-  return content.replace(/#colorFunc#/, '');
+export const replaceNoColor = (content: string) => {
+  return content.replace(/#colorFunc#/g, '');
+};
+
+export const replaceSummaryIcon = (content: string, iconName: string) => {
+  return content.replace(/#SummaryIcon#/g, iconName);
 };

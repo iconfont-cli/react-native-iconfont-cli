@@ -4,5 +4,6 @@
   "generate_mode": "depends-on",
   "save_dir": "./snapshots/depends-on-js",
   "trim_icon_prefix": "icon",
-  "default_icon_size": 18
+  "default_icon_size": 18,
+  "summary_component_name": "IconFont"
 }

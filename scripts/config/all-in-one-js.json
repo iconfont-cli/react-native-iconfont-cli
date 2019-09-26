@@ -4,5 +4,6 @@
   "generate_mode": "all-in-one",
   "save_dir": "./snapshots/all-in-one-js",
   "trim_icon_prefix": "icon",
-  "default_icon_size": 14
+  "default_icon_size": 14,
+  "summary_component_name": "Icon"
 }

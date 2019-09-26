@@ -1,25 +1,15 @@
-/* tslint:disable */
 /* eslint-disable */
 
-import React, { FunctionComponent } from 'react';
-import { ViewProps } from 'react-native';
-import { GProps } from 'react-native-svg';
+import React from 'react';
+
 import IconAlipay from './IconAlipay';
 import IconUser from './IconUser';
 import IconSetup from './IconSetup';
 
-export type IconNames = 'alipay' | 'user' | 'setup';
-
-interface Props extends GProps, ViewProps {
-  name: IconNames;
-  size?: number;
-  color?: string | string[];
-}
-
 // If you don't like lots of icon files in your project,
 // try to set generate_mode to "all-in-one" in root file "iconfont.json".
 // And then regenerate icons by using cli command.
-const Icon: FunctionComponent<Props> = ({ color, name, size, ...rest }) => {
+const IconFont = ({ color, name, size, ...rest }) => {
   switch (name) {
     case 'alipay':
       return <IconAlipay size={size} color={color} {...rest} />;
@@ -33,8 +23,8 @@ const Icon: FunctionComponent<Props> = ({ color, name, size, ...rest }) => {
   return null;
 };
 
-Icon.defaultProps = {
-  size: 20,
+IconFont.defaultProps = {
+  size: 18,
 };
 
-export default Icon;
+export default IconFont;

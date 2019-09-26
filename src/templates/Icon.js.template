@@ -5,7 +5,7 @@ import React from 'react';
 #imports#
 
 #comments#
-const Icon = ({ color, name, size, ...rest }) => {
+const #SummaryIcon# = ({ color, name, size, ...rest }) => {
   switch (name) {
 #cases#
   }
@@ -13,8 +13,8 @@ const Icon = ({ color, name, size, ...rest }) => {
   return null;
 };
 
-Icon.defaultProps = {
+#SummaryIcon#.defaultProps = {
   size: #size#,
 };
 #colorFunc#
-export default Icon;
+export default #SummaryIcon#;

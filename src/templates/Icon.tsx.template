@@ -15,7 +15,7 @@ interface Props extends GProps, ViewProps {
 }
 
 #comments#
-const Icon: FunctionComponent<Props> = ({ color, name, size, ...rest }) => {
+const #SummaryIcon#: FunctionComponent<Props> = ({ color, name, size, ...rest }) => {
   switch (name) {
 #cases#
   }
@@ -23,8 +23,8 @@ const Icon: FunctionComponent<Props> = ({ color, name, size, ...rest }) => {
   return null;
 };
 
-Icon.defaultProps = {
+#SummaryIcon#.defaultProps = {
   size: #size#,
 };
 #colorFunc#
-export default Icon;
+export default #SummaryIcon#;
