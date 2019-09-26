@@ -57,7 +57,7 @@ cd ios && pod install
 # Step 3
 生成配置文件
 ```bash
-npx iconfont init
+npx iconfont-init
 ```
 此时项目根目录会生成一个`iconfont.json`的文件，内容如下：
 ```json
@@ -113,7 +113,7 @@ npx iconfont init
 # Step 4
 开始生成React-Native标准组件
 ```bash
-npx iconfont
+npx iconfont-rn
 ```
 生成后查看您设置的保存目录中是否含有所有的图标
 
@@ -181,7 +181,7 @@ export const App = () => {
 当您在iconfont.cn中的图标有变更时，只需更改配置`symbol_url`，然后再次执行`Step 4`即可生成最新的图标组件
 ```bash
 # 修改 symbol_url 配置后执行：
-npx iconfont
+npx iconfont-rn
 ```
 
 --------

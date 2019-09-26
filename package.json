@@ -14,7 +14,9 @@
   "author": "范文华 <531362022@qq.com>",
   "license": "MIT",
   "bin": {
-    "iconfont": "./index.js"
+    "iconfont": "./commands/help.js",
+    "iconfont-init": "./commands/createJson.js",
+    "iconfont-rn": "./commands/createIcon.js"
   },
   "peerDependencies": {
     "react": "*",
