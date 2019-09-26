@@ -30,6 +30,7 @@
 |----|---|
 |小程序|[mini-program-iconfont-cli](https://github.com/fwh1990/mini-program-iconfont-cli)|
 |Taro|[taro-iconfont-cli](https://github.com/fwh1990/taro-iconfont-cli)|
+|React 网页|[react-iconfont-cli](https://github.com/fwh1990/react-iconfont-cli)|
 
 ## Step 1
 安装插件
@@ -110,14 +111,13 @@ npx iconfont init
 就是汇总组件的名称，默认名称为`Icon`，您也可以改成`IconFont`或者您喜欢的名字。记住，它是一个变量名，您必须遵守Javascript中关于变量的语法规则。以及作为组件名，请尽量以大写字母开头。
 
 # Step 4
-开始生成React组件
+开始生成React-Native标准组件
 ```bash
 npx iconfont
 ```
 生成后查看您设置的保存目录中是否含有所有的图标
 
-# Step 5
-使用这些图标。
+# 使用
 <br />
 现在我们提供了两种引入方式供您选择：
 
@@ -151,7 +151,6 @@ export const App = () => {
 };
 ```
 
-# 使用
 ### 图标尺寸
 根据配置`default_icon_size`，每个图标都会有一个默认的尺寸，你可以随时覆盖。
 ```typescript jsx
