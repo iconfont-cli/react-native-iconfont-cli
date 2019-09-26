@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import colors from 'colors';
 import { getConfig } from '../libs/getConfig';
 import { fetchXml } from '../libs/fetchXml';

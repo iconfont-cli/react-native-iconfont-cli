@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import colors from 'colors';
 
 export const renderHelp = () => {
