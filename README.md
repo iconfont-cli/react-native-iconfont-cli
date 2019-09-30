@@ -120,10 +120,10 @@ import Icon from '../src/iconfont/Icon';
 
 export const App = () => {
   return (
-    <div>
+    <View>
       <Icon name="alipay" size={20} />
       <Icon name="wechat" />
-    </div>
+    </View>
   );
 };
 ```
@@ -136,10 +136,10 @@ import IconWechat from '../src/iconfont/IconWechat';
 
 export const App = () => {
   return (
-    <div>
+    <View>
       <IconAlipay size={20} />
       <IconWechat />
-    </div>
+    </View>
   );
 };
 ```
