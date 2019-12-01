@@ -12,7 +12,7 @@ interface Props extends GProps, ViewProps {
 }
 
 #comments#
-const #componentName#: FunctionComponent<Props> = ({ size, color, ...rest }) => {
+export const #componentName#: FunctionComponent<Props> = ({ size, color, ...rest }) => {
   return (#iconContent#  );
 };
 

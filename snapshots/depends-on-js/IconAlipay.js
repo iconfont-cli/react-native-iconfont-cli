@@ -7,7 +7,7 @@ import { getIconColor } from './helper';
 // If you don't like lots of icon files in your project,
 // try to set generate_mode to "all-in-one" in root file "iconfont.json".
 // And then regenerate icons by using cli command.
-const IconAlipay = ({ size, color, ...rest }) => {
+export const IconAlipay = ({ size, color, ...rest }) => {
   return (
     <Svg viewBox="0 0 1024 1024" width={size} height={size} {...rest}>
       <Path

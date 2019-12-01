@@ -19,7 +19,7 @@ interface Props extends GProps, ViewProps {
 // If you don't like lots of icon files in your project,
 // try to set generate_mode to "all-in-one" in root file "iconfont.json".
 // And then regenerate icons by using cli command.
-const CustomIcon: FunctionComponent<Props> = ({ color, name, size, ...rest }) => {
+export const CustomIcon: FunctionComponent<Props> = ({ color, name, size, ...rest }) => {
   switch (name) {
     case 'alipay':
       return <IconAlipay size={size} color={color} {...rest} />;

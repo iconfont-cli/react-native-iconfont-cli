@@ -5,7 +5,7 @@ import React from 'react';
 #imports#
 
 #comments#
-const #SummaryIcon# = ({ color, name, size, ...rest }) => {
+export const #SummaryIcon# = ({ color, name, size, ...rest }) => {
   switch (name) {
 #cases#
   }

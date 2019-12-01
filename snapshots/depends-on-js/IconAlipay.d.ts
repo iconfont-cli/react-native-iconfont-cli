@@ -10,6 +10,6 @@ interface Props extends GProps, ViewProps {
   color?: string | string[];
 }
 
-declare const IconAlipay: FunctionComponent<Props>;
+export declare const IconAlipay: FunctionComponent<Props>;
 
-export = IconAlipay;
+export default IconAlipay;
