@@ -4,6 +4,7 @@
 import React, { FunctionComponent } from 'react';
 import { ViewProps } from 'react-native';
 #svgComponents#
+#helper#
 #imports#
 
 export type IconNames = '#names#';
@@ -26,5 +27,5 @@ export const #SummaryIcon#: FunctionComponent<Props> = ({ color, name, size, ...
 #SummaryIcon#.defaultProps = {
   size: #size#,
 };
-#colorFunc#
+
 export default #SummaryIcon#;

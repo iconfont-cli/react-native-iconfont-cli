@@ -4,6 +4,7 @@
 import React, { FunctionComponent } from 'react';
 import { ViewProps } from 'react-native';
 import { Svg, GProps, Path } from 'react-native-svg';
+import { getIconColor } from './helper';
 
 
 export type IconNames = 'alipay' | 'user' | 'setup';
@@ -102,16 +103,6 @@ export const Icon: FunctionComponent<Props> = ({ color, name, size, ...rest }) =
 
 Icon.defaultProps = {
   size: 16,
-};
-
-const getIconColor = (color: string | string[] | undefined, index: number, defaultColor: string) => {
-  return color
-    ? (
-      typeof color === 'string'
-        ? color
-        : color[index] || defaultColor
-    )
-    : defaultColor;
 };
 
 export default Icon;

@@ -1,5 +1,4 @@
 import { GENERATE_MODE } from './generateMode';
-import { getTemplate } from './getTemplate';
 
 export const replaceSize = (content: string, size: number) => {
   return content.replace(/#size#/g, String(size));
@@ -61,12 +60,17 @@ export const replaceToDependsComments = (content: string) => {
   );
 };
 
-export const replaceColorFunc = (content: string, extension: string) => {
+export const replaceHelper = (content: string) => {
   return content.replace(
-    /#colorFunc#/,
-    getTemplate(`helper${extension}`)
-      .replace(/export\s+/g, '')
-      .replace(/\/\*\s.+?\s\*\/\n/g, '')
+    /#helper#/g,
+    'import { getIconColor } from \'./helper\';'
+  );
+};
+
+export const replaceNoHelper = (content: string) => {
+  return content.replace(
+    /#helper#\n/g,
+    ''
   );
 };
 

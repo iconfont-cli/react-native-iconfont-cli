@@ -8,19 +8,22 @@ import { XmlData } from 'iconfont-parser';
 import { Config } from './getConfig';
 import { getTemplate } from './getTemplate';
 import {
-  replaceCases, replaceColorFunc,
+  replaceCases,
   replaceComponentName,
   replaceImports,
   replaceNames,
-  replaceNamesArray, replaceNoColor,
+  replaceNamesArray,
   replaceSingleIconContent,
   replaceSize, replaceSummaryIcon,
   replaceSvgComponents,
   replaceToDependsComments,
   replaceToOneComments,
+  replaceNoHelper,
+  replaceHelper,
 } from './replace';
 import { whitespace } from './whitespace';
 import { GENERATE_MODE } from './generateMode';
+import { copyTemplate } from './copyTemplate';
 
 const SVG_MAP = {
   path: 'Path',
@@ -48,11 +51,9 @@ export const generateComponent = (data: XmlData, config: Config) => {
     svgComponents.add('GProps');
   }
 
-  if (config.generate_mode === GENERATE_MODE.dependsOn) {
-    fs.copyFileSync(
-      path.join(__dirname, '..', 'templates', `helper${jsExtension}.template`),
-      path.join(saveDir, `helper${jsExtension}`),
-    );
+  copyTemplate(`helper${jsExtension}`, path.join(saveDir, `helper${jsExtension}`));
+  if (!config.use_typescript) {
+    copyTemplate('helper.d.ts', path.join(saveDir, 'helper.d.ts'));
   }
 
   data.svg.symbol.forEach((item) => {
@@ -104,6 +105,7 @@ export const generateComponent = (data: XmlData, config: Config) => {
     singleFile = replaceComponentName(singleFile, componentName);
     singleFile = replaceSingleIconContent(singleFile, generateCase(item, 4));
     singleFile = replaceToOneComments(singleFile);
+    singleFile = replaceHelper(singleFile);
 
     fs.writeFileSync(path.join(saveDir, componentName + jsxExtension), singleFile);
 
@@ -118,6 +120,12 @@ export const generateComponent = (data: XmlData, config: Config) => {
   });
 
   let iconFile =  getTemplate('Icon' + jsxExtension);
+
+  if (config.generate_mode === GENERATE_MODE.dependsOn) {
+    iconFile = replaceNoHelper(iconFile);
+  } else {
+    iconFile = replaceHelper(iconFile);
+  }
 
   iconFile = replaceSize(iconFile, config.default_icon_size);
   iconFile = replaceCases(iconFile, cases);
@@ -138,10 +146,8 @@ export const generateComponent = (data: XmlData, config: Config) => {
 
   if (config.generate_mode === GENERATE_MODE.allInOne) {
     iconFile = replaceToDependsComments(iconFile);
-    iconFile = replaceColorFunc(iconFile, jsExtension);
   } else {
     iconFile = replaceToOneComments(iconFile);
-    iconFile = replaceNoColor(iconFile);
   }
 
   iconFile = replaceSummaryIcon(iconFile, config.summary_component_name);

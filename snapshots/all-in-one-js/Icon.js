@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Svg, Path } from 'react-native-svg';
+import { getIconColor } from './helper';
 
 
 // If you don't want to make all icons in one file,
@@ -92,22 +93,6 @@ export const Icon = ({ color, name, size, ...rest }) => {
 
 Icon.defaultProps = {
   size: 14,
-};
-
-/**
- * @param {string | string[] | undefined} color
- * @param {number} index
- * @param {string} defaultColor
- * @return {string}
- */
-const getIconColor = (color, index, defaultColor) => {
-  return color
-    ? (
-      typeof color === 'string'
-        ? color
-        : color[index] || defaultColor
-    )
-    : defaultColor;
 };
 
 export default Icon;

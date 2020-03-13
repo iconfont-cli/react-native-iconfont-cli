@@ -2,6 +2,7 @@
 
 import React from 'react';
 #svgComponents#
+#helper#
 #imports#
 
 #comments#
@@ -16,5 +17,5 @@ export const #SummaryIcon# = ({ color, name, size, ...rest }) => {
 #SummaryIcon#.defaultProps = {
   size: #size#,
 };
-#colorFunc#
+
 export default #SummaryIcon#;
