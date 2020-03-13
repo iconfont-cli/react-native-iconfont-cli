@@ -4,7 +4,6 @@
 import React, { FunctionComponent } from 'react';
 import { ViewProps } from 'react-native';
 #svgComponents#
-#helper#
 #imports#
 
 export type IconNames = '#names#';
@@ -15,11 +14,9 @@ interface Props extends GProps, ViewProps {
   color?: string | string[];
 }
 
-#comments#
-export const #SummaryIcon#: FunctionComponent<Props> = ({ color, name, size, ...rest }) => {
+export const #SummaryIcon#: FunctionComponent<Props> = ({ name, ...rest }) => {
   switch (name) {
-#cases#
-  }
+#cases#  }
 
   return null;
 };

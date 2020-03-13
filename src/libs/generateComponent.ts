@@ -16,13 +16,9 @@ import {
   replaceSingleIconContent,
   replaceSize, replaceSummaryIcon,
   replaceSvgComponents,
-  replaceToDependsComments,
-  replaceToOneComments,
-  replaceNoHelper,
   replaceHelper,
 } from './replace';
 import { whitespace } from './whitespace';
-import { GENERATE_MODE } from './generateMode';
 import { copyTemplate } from './copyTemplate';
 
 const SVG_MAP = {
@@ -42,10 +38,6 @@ export const generateComponent = (data: XmlData, config: Config) => {
 
   mkdirp.sync(saveDir);
   glob.sync(path.join(saveDir, '*')).forEach((file) => fs.unlinkSync(file));
-
-  if (config.generate_mode === GENERATE_MODE.allInOne) {
-    svgComponents.add('Svg');
-  }
 
   if (config.use_typescript) {
     svgComponents.add('GProps');
@@ -78,10 +70,6 @@ export const generateComponent = (data: XmlData, config: Config) => {
       switch (domName) {
         case 'path':
           currentSvgComponents.add('Path');
-
-          if (config.generate_mode === GENERATE_MODE.allInOne) {
-            svgComponents.add('Path');
-          }
           break;
         default:
           // no default
@@ -90,21 +78,14 @@ export const generateComponent = (data: XmlData, config: Config) => {
 
     cases += `${whitespace(4)}case '${iconIdAfterTrim}':\n`;
 
-    if (config.generate_mode === GENERATE_MODE.allInOne) {
-      cases += `${whitespace(6)}return (${generateCase(item, 8)}${whitespace(6)});\n`;
-
-      return;
-    }
-
     imports.push(componentName);
-    cases += `${whitespace(6)}return <${componentName} size={size} color={color} {...rest} />;\n`;
+    cases += `${whitespace(6)}return <${componentName} {...rest} />;\n`;
 
     singleFile = getTemplate('SingleIcon' + jsxExtension);
     singleFile = replaceSize(singleFile, config.default_icon_size);
     singleFile = replaceSvgComponents(singleFile, currentSvgComponents);
     singleFile = replaceComponentName(singleFile, componentName);
     singleFile = replaceSingleIconContent(singleFile, generateCase(item, 4));
-    singleFile = replaceToOneComments(singleFile);
     singleFile = replaceHelper(singleFile);
 
     fs.writeFileSync(path.join(saveDir, componentName + jsxExtension), singleFile);
@@ -121,12 +102,6 @@ export const generateComponent = (data: XmlData, config: Config) => {
 
   let iconFile =  getTemplate('Icon' + jsxExtension);
 
-  if (config.generate_mode === GENERATE_MODE.dependsOn) {
-    iconFile = replaceNoHelper(iconFile);
-  } else {
-    iconFile = replaceHelper(iconFile);
-  }
-
   iconFile = replaceSize(iconFile, config.default_icon_size);
   iconFile = replaceCases(iconFile, cases);
   iconFile = replaceSvgComponents(iconFile, svgComponents);
@@ -142,12 +117,6 @@ export const generateComponent = (data: XmlData, config: Config) => {
     typeDefinitionFile = replaceNames(typeDefinitionFile, names);
     typeDefinitionFile = replaceSummaryIcon(typeDefinitionFile, config.summary_component_name);
     fs.writeFileSync(path.join(saveDir, config.summary_component_name + '.d.ts'), typeDefinitionFile);
-  }
-
-  if (config.generate_mode === GENERATE_MODE.allInOne) {
-    iconFile = replaceToDependsComments(iconFile);
-  } else {
-    iconFile = replaceToOneComments(iconFile);
   }
 
   iconFile = replaceSummaryIcon(iconFile, config.summary_component_name);

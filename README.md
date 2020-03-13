@@ -58,7 +58,6 @@ npx iconfont-init
     "symbol_url": "请参考README.md，复制官网提供的JS链接",
     "use_typescript": false,
     "save_dir": "./src/iconfont",
-    "generate_mode": "all-in-one",
     "trim_icon_prefix": "icon",
     "default_icon_size": 18,
     "summary_component_name": "Icon"
@@ -75,26 +74,13 @@ npx iconfont-init
 ### use_typescript
 如果您的项目使用Typescript编写，请设置为true。这个选项将决定生成的图标组件是`.tsx`还是`.js`后缀。
 
-当该值为false时，我们会为您的图标生成`.js`和`.d.ts`两个文件，以便您能享受到最好的开发体验。
-
-### generate_mode
-生成组件的方式：
-##### 1、all-in-one
-只生成一个`<Icon name="xxx" />` 组件，里面包含了所有图标信息。所以这个组件会比较大。
-##### 2、depends-on
-每个图标都会生成一个组件`<IconXXX />`。这种模式也会生成一个`Icon`组件，但和all-in-one不同的是，这个Icon组件总是import其他的图标组件，它相当于一个门面。
-
-------
-
-现在，你可以参考[snapshots目录](https://github.com/fwh1990/react-native-iconfont-cli/tree/master/snapshots)的快照文件，以区分不同模式下的图标结构。
+当该值为false时，我们会为您的图标生成`.js`和`.d.ts`两种文件，以便您能享受到最好的开发体验。
 
 ### save_dir
 根据iconfont图标生成的组件存放的位置。每次生成组件之前，该文件夹都会被清空。
 
 ### trim_icon_prefix
 如果你的图标有通用的前缀，而你在使用的时候又不想重复去写，那么可以通过这种配置这个选项把前缀统一去掉。
-
-注意，这个选项只针对 `<Icon />` 组件有效
 
 ### default_icon_size
 我们将为每个生成的图标组件加入默认的字体大小，当然，你也可以通过传入props的方式改变这个size值。
@@ -108,7 +94,8 @@ npx iconfont-init
 ```bash
 npx iconfont-rn
 ```
-生成后查看您设置的保存目录中是否含有所有的图标
+
+生成后查看您设置的保存目录中是否含有所有的图标，你可以参考**[snapshots目录](https://github.com/fwh1990/react-native-iconfont-cli/tree/master/snapshots)**的快照文件，以区分不同模式下的图标结构。
 
 # 使用
 <br />
@@ -128,7 +115,7 @@ export const App = () => {
 };
 ```
 
-2、当您配置的`generate_mode=depends-on`时，您可以使用单个图标。这样可以避免没用到的图标也打包进App：
+2、使用单个图标。这样可以避免没用到的图标也打包进App：
 
 ```typescript jsx
 import IconAlipay from '../src/iconfont/IconAlipay';

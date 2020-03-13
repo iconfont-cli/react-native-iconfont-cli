@@ -1,9 +1,8 @@
 {
   "symbol_url": "http://at.alicdn.com/t/font_1373348_ghk94ooopqr.js",
   "use_typescript": true,
-  "generate_mode": "depends-on",
-  "save_dir": "./snapshots/depends-on-ts",
+  "save_dir": "./snapshots/demo-ts",
   "trim_icon_prefix": "icon",
   "default_icon_size": 20,
-  "summary_component_name": "CustomIcon"
+  "summary_component_name": "Icon_Custom_Name"
 }

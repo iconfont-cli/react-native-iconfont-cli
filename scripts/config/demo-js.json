@@ -1,9 +1,8 @@
 {
   "symbol_url": "http://at.alicdn.com/t/font_1373348_ghk94ooopqr.js",
-  "use_typescript": true,
-  "generate_mode": "all-in-one",
-  "save_dir": "./snapshots/all-in-one-ts",
+  "use_typescript": false,
+  "save_dir": "./snapshots/demo-js",
   "trim_icon_prefix": "icon",
-  "default_icon_size": 16,
+  "default_icon_size": 18,
   "summary_component_name": "Icon"
 }

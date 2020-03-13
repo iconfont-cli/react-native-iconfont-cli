@@ -2,14 +2,11 @@
 
 import React from 'react';
 #svgComponents#
-#helper#
 #imports#
 
-#comments#
-export const #SummaryIcon# = ({ color, name, size, ...rest }) => {
+export const #SummaryIcon# = ({ name, ...rest }) => {
   switch (name) {
-#cases#
-  }
+#cases#  }
 
   return null;
 };

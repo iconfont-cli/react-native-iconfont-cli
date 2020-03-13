@@ -11,9 +11,6 @@ interface Props extends GProps, ViewProps {
   color?: string | string[];
 }
 
-// If you don't like lots of icon files in your project,
-// try to set generate_mode to "all-in-one" in root file "iconfont.json".
-// And then regenerate icons by using cli command.
 export const IconAlipay: FunctionComponent<Props> = ({ size, color, ...rest }) => {
   return (
     <Svg viewBox="0 0 1024 1024" width={size} height={size} {...rest}>
