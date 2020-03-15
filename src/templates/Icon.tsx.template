@@ -21,8 +21,4 @@ export const #SummaryIcon#: FunctionComponent<Props> = ({ name, ...rest }) => {
   return null;
 };
 
-#SummaryIcon#.defaultProps = {
-  size: #size#,
-};
-
 export default #SummaryIcon#;

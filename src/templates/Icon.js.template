@@ -11,8 +11,4 @@ export const #SummaryIcon# = ({ name, ...rest }) => {
   return null;
 };
 
-#SummaryIcon#.defaultProps = {
-  size: #size#,
-};
-
 export default #SummaryIcon#;

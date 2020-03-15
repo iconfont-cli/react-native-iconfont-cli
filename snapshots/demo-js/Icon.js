@@ -19,8 +19,4 @@ export const Icon = ({ name, ...rest }) => {
   return null;
 };
 
-Icon.defaultProps = {
-  size: 18,
-};
-
 export default Icon;

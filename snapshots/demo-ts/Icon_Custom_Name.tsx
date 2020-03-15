@@ -29,8 +29,4 @@ export const Icon_Custom_Name: FunctionComponent<Props> = ({ name, ...rest }) =>
   return null;
 };
 
-Icon_Custom_Name.defaultProps = {
-  size: 20,
-};
-
 export default Icon_Custom_Name;
