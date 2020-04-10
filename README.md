@@ -95,7 +95,7 @@ npx iconfont-init
 npx iconfont-rn
 ```
 
-生成后查看您设置的保存目录中是否含有所有的图标，你可以参考**[snapshots目录](https://github.com/fwh1990/react-native-iconfont-cli/tree/master/snapshots)**的快照文件，以区分不同模式下的图标结构。
+生成后查看您设置的保存目录中是否含有所有的图标，你可以参考**[snapshots目录](https://github.com/iconfont-cli/react-native-iconfont-cli/tree/master/snapshots)**的快照文件，以区分不同模式下的图标结构。
 
 # 使用
 <br />
