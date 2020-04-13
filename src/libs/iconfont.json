@@ -3,6 +3,5 @@
   "use_typescript": false,
   "save_dir": "./src/iconfont",
   "trim_icon_prefix": "icon",
-  "default_icon_size": 18,
-  "summary_component_name": "Icon"
+  "default_icon_size": 18
 }

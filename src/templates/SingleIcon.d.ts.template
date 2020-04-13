@@ -10,6 +10,6 @@ interface Props extends GProps, ViewProps {
   color?: string | string[];
 }
 
-export declare const #componentName#: FunctionComponent<Props>;
+declare const #componentName#: FunctionComponent<Props>;
 
 export default #componentName#;

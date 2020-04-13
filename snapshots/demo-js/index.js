@@ -6,7 +6,7 @@ import IconAlipay from './IconAlipay';
 import IconUser from './IconUser';
 import IconSetup from './IconSetup';
 
-export const Icon = ({ name, ...rest }) => {
+const IconFont = ({ name, ...rest }) => {
   switch (name) {
     case 'alipay':
       return <IconAlipay {...rest} />;
@@ -19,4 +19,4 @@ export const Icon = ({ name, ...rest }) => {
   return null;
 };
 
-export default Icon;
+export default IconFont;

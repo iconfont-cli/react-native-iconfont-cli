@@ -9,7 +9,6 @@ export interface Config {
   save_dir: string;
   trim_icon_prefix: string;
   default_icon_size: number;
-  summary_component_name: string;
 }
 
 let cacheConfig: Config;
@@ -39,7 +38,6 @@ export const getConfig = () => {
 
   config.save_dir = config.save_dir || defaultConfig.save_dir;
   config.default_icon_size = config.default_icon_size || defaultConfig.default_icon_size;
-  config.summary_component_name = config.summary_component_name || defaultConfig.summary_component_name;
 
   cacheConfig = config;
 

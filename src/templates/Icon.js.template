@@ -4,11 +4,11 @@ import React from 'react';
 #svgComponents#
 #imports#
 
-export const #SummaryIcon# = ({ name, ...rest }) => {
+const IconFont = ({ name, ...rest }) => {
   switch (name) {
 #cases#  }
 
   return null;
 };
 
-export default #SummaryIcon#;
+export default IconFont;

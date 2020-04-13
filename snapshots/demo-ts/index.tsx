@@ -16,7 +16,7 @@ interface Props extends GProps, ViewProps {
   color?: string | string[];
 }
 
-export const Icon_Custom_Name: FunctionComponent<Props> = ({ name, ...rest }) => {
+const IconFont: FunctionComponent<Props> = ({ name, ...rest }) => {
   switch (name) {
     case 'alipay':
       return <IconAlipay {...rest} />;
@@ -29,4 +29,4 @@ export const Icon_Custom_Name: FunctionComponent<Props> = ({ name, ...rest }) =>
   return null;
 };
 
-export default Icon_Custom_Name;
+export default IconFont;

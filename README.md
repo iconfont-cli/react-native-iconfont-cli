@@ -59,8 +59,7 @@ npx iconfont-init
     "use_typescript": false,
     "save_dir": "./src/iconfont",
     "trim_icon_prefix": "icon",
-    "default_icon_size": 18,
-    "summary_component_name": "Icon"
+    "default_icon_size": 18
 }
 ```
 ### 配置参数说明：
@@ -84,10 +83,6 @@ npx iconfont-init
 
 ### default_icon_size
 我们将为每个生成的图标组件加入默认的字体大小，当然，你也可以通过传入props的方式改变这个size值。
-
-
-### summary_component_name
-就是汇总组件的名称，默认名称为`Icon`，您也可以改成`IconFont`或者您喜欢的名字。记住，它是一个变量名，您必须遵守Javascript中关于变量的语法规则。以及作为组件名，请尽量以大写字母开头。
 
 # Step 4
 开始生成React-Native标准组件
