@@ -90,7 +90,7 @@ npx iconfont-init
 npx iconfont-rn
 ```
 
-生成后查看您设置的保存目录中是否含有所有的图标，你可以参考**[snapshots目录](https://github.com/iconfont-cli/react-native-iconfont-cli/tree/master/snapshots)**的快照文件，以区分不同模式下的图标结构。
+生成后查看您设置的保存目录中是否含有所有的图标，你可以参考[snapshots目录](https://github.com/iconfont-cli/react-native-iconfont-cli/tree/master/snapshots)的快照文件，以区分不同模式下的图标结构。
 
 # 使用
 <br />
@@ -98,7 +98,7 @@ npx iconfont-rn
 
 1、使用汇总`Icon`组件：
 ```typescript jsx
-import Icon from '../src/iconfont/Icon';
+import Icon from '../src/iconfont';
 
 export const App = () => {
   return (
@@ -166,7 +166,8 @@ npx iconfont-rn
 |小程序|[mini-program-iconfont-cli](https://github.com/iconfont-cli/mini-program-iconfont-cli)|
 |Taro|[taro-iconfont-cli](https://github.com/iconfont-cli/taro-iconfont-cli)|
 |React H5|[react-iconfont-cli](https://github.com/iconfont-cli/react-iconfont-cli)|
-|Flutter|[flutter-iconfont-cli](https://github.com/iconfont-cli/flutter-iconfont-cli)
+|Flutter|[flutter-iconfont-cli](https://github.com/iconfont-cli/flutter-iconfont-cli)|
+[Remax]|[remax-iconfont-cli](https://github.com/iconfont-cli/remax-iconfont-cli)|
 
 --------
 
