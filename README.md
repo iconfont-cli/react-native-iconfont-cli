@@ -98,13 +98,13 @@ npx iconfont-rn
 
 1、使用汇总`Icon`组件：
 ```typescript jsx
-import Icon from '../src/iconfont';
+import IconFont from '../src/iconfont';
 
 export const App = () => {
   return (
     <View>
-      <Icon name="alipay" size={20} />
-      <Icon name="wechat" />
+      <IconFont name="alipay" size={20} />
+      <IconFont name="wechat" />
     </View>
   );
 };
@@ -129,7 +129,7 @@ export const App = () => {
 ### 图标尺寸
 根据配置`default_icon_size`，每个图标都会有一个默认的尺寸，你可以随时覆盖。
 ```typescript jsx
-<Icon name="alipay" size={20} />
+<IconFont name="alipay" size={20} />
 ```
 ![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/images/default-color-icon.png?raw=true)
 ### 图标单色
@@ -138,14 +138,14 @@ export const App = () => {
 **注意：如果你在props传入的color是字符串而不是数组，那么即使原本是多色彩的图标，也会变成单色图标。**
 
 ```typescript jsx
-<Icon name="alipay" color="green" />
+<IconFont name="alipay" color="green" />
 ```
 ![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/images/one-color-icon.png?raw=true)
 
 ### 图标多色彩
 多色彩的图标，如果不指定颜色值，图标将渲染原本的多色彩。如果你想设置为其他的颜色，那么设置一组你想要的颜色即可
 ```typescript jsx
-<Icon name="alipay" color={['green', 'orange']} />
+<IconFont name="alipay" color={['green', 'orange']} />
 ```
 颜色组的数量以及排序，需要根据当前图标的信息来确定。您需要进入图标组件中查看并得出结论。
 
@@ -167,7 +167,7 @@ npx iconfont-rn
 |Taro|[taro-iconfont-cli](https://github.com/iconfont-cli/taro-iconfont-cli)|
 |React H5|[react-iconfont-cli](https://github.com/iconfont-cli/react-iconfont-cli)|
 |Flutter|[flutter-iconfont-cli](https://github.com/iconfont-cli/flutter-iconfont-cli)|
-[Remax]|[remax-iconfont-cli](https://github.com/iconfont-cli/remax-iconfont-cli)|
+|Remax|[remax-iconfont-cli](https://github.com/iconfont-cli/remax-iconfont-cli)|
 
 --------
 
