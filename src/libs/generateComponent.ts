@@ -174,7 +174,7 @@ const addAttribute = (domName: string, sub: XmlData['svg']['symbol'][number]['pa
       } else {
         // convert attribute name to camel case, e.g fill-opacity to fillOpacity
         const reg = /-(\w)/g;
-        const camelAttributeName = attributeName.replace(reg, (a,b) =>  b.toUpperCase());
+        const camelAttributeName = attributeName.replace(reg, (_a,b) =>  b.toUpperCase());
         template += `\n${whitespace(counter.baseIdent + 4)}${camelAttributeName}="${sub.$[attributeName]}"`;
       }
     }
