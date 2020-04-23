@@ -172,7 +172,10 @@ const addAttribute = (domName: string, sub: XmlData['svg']['symbol'][number]['pa
         template += `\n${whitespace(counter.baseIdent + 4)}${attributeName}={getIconColor(color, ${counter.colorIndex}, '${sub.$[attributeName]}')}`;
         counter.colorIndex += 1;
       } else {
-        template += `\n${whitespace(counter.baseIdent + 4)}${attributeName}="${sub.$[attributeName]}"`;
+        // convert attribute name to camel case, e.g fill-opacity to fillOpacity
+        const reg = /-(\w)/g;
+        const camelAttributeName = attributeName.replace(reg, (a,b) =>  b.toUpperCase());
+        template += `\n${whitespace(counter.baseIdent + 4)}${camelAttributeName}="${sub.$[attributeName]}"`;
       }
     }
   }
