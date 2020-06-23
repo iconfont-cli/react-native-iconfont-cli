@@ -66,4 +66,4 @@ IconSetup.defaultProps = {
   size: 20,
 };
 
-export default IconSetup;
+export default React.memo ? React.memo(IconSetup) : IconSetup;

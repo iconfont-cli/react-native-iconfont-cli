@@ -23,4 +23,4 @@ IconAlipay.defaultProps = {
   size: 18,
 };
 
-export default IconAlipay;
+export default React.memo ? React.memo(IconAlipay) : IconAlipay;

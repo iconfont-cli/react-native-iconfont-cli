@@ -19,4 +19,4 @@ const IconFont = ({ name, ...rest }) => {
   return null;
 };
 
-export default IconFont;
+export default React.memo ? React.memo(IconFont) : IconFont;

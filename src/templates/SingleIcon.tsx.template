@@ -19,4 +19,4 @@ const #componentName#: FunctionComponent<Props> = ({ size, color, ...rest }) => 
   size: #size#,
 };
 
-export default #componentName#;
+export default React.memo ? React.memo(#componentName#) : #componentName#;

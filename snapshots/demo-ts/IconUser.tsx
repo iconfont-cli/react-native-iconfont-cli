@@ -30,4 +30,4 @@ IconUser.defaultProps = {
   size: 20,
 };
 
-export default IconUser;
+export default React.memo ? React.memo(IconUser) : IconUser;
