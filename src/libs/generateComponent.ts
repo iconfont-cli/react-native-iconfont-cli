@@ -48,7 +48,7 @@ export const generateComponent = (data: XmlData, config: Config) => {
     copyTemplate('helper.d.ts', path.join(saveDir, 'helper.d.ts'));
   }
 
-  data.svg.symbol.forEach((item) => {
+  data.svg.symbol.forEach((item, index) => {
     let singleFile: string;
     const currentSvgComponents = new Set<string>(['Svg']);
     const iconId = item.$.id;
@@ -79,7 +79,7 @@ export const generateComponent = (data: XmlData, config: Config) => {
     cases += `${whitespace(4)}case '${iconIdAfterTrim}':\n`;
 
     imports.push(componentName);
-    cases += `${whitespace(6)}return <${componentName} {...rest} />;\n`;
+    cases += `${whitespace(6)}return <${componentName} key="${index + 1}" {...rest} />;\n`;
 
     singleFile = getTemplate('SingleIcon' + jsxExtension);
     singleFile = replaceSize(singleFile, config.default_icon_size);
