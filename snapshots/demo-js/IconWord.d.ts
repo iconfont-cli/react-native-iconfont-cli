@@ -6,11 +6,10 @@ import { ViewProps } from 'react-native';
 import { GProps } from 'react-native-svg';
 
 interface Props extends GProps, ViewProps {
-  name: 'alipay' | 'user' | 'setup' | 'word';
   size?: number;
   color?: string | string[];
 }
 
-declare const IconFont: FunctionComponent<Props>;
+declare const IconWord: FunctionComponent<Props>;
 
-export default IconFont;
+export default IconWord;

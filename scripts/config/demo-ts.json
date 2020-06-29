@@ -3,5 +3,6 @@
   "use_typescript": true,
   "save_dir": "./snapshots/demo-ts",
   "trim_icon_prefix": "icon",
-  "default_icon_size": 20
+  "default_icon_size": 20,
+  "local_dir": "./locals"
 }
