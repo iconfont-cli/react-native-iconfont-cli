@@ -4,7 +4,7 @@ import colors from 'colors'
 import { getConfig } from '../libs/getConfig'
 import { fetchXml } from 'iconfont-parser'
 import { generateComponent } from '../libs/generateComponent'
-import parseLocalSvg from '../libs/parseLocalSvg'
+import parseLocalSvg from 'src/libs/parseLocalSvg'
 
 const config = getConfig()
 
