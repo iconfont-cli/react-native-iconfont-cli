@@ -49,6 +49,13 @@ export const replaceHelper = (content: string) => {
   );
 };
 
+export const replaceNoHelper = (content: string) => {
+  return content.replace(
+    /#helper#/g,
+    ''
+  );
+};
+
 export const replaceNoColor = (content: string) => {
   return content.replace(/#colorFunc#/g, '');
 };

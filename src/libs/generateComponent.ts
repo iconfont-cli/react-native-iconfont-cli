@@ -16,10 +16,11 @@ import {
   replaceSingleIconContent,
   replaceSize,
   replaceSvgComponents,
-  replaceHelper,
-} from './replace';
+  replaceHelper, replaceNoHelper,
+} from './replace'
 import { whitespace } from './whitespace';
 import { copyTemplate } from './copyTemplate';
+import { ILocalSvg } from '../libs/parseLocalSvg';
 
 const SVG_MAP = {
   path: 'Path',
@@ -27,7 +28,7 @@ const SVG_MAP = {
 
 const ATTRIBUTE_FILL_MAP = ['path'];
 
-export const generateComponent = (data: XmlData, config: Config) => {
+export const generateComponent = (data: XmlData, localSvg: ILocalSvg[], config: Config) => {
   const svgComponents: Set<string> = new Set();
   const names: string[] = [];
   const imports: string[] = [];
@@ -99,6 +100,39 @@ export const generateComponent = (data: XmlData, config: Config) => {
 
     console.log(`${colors.green('√')} Generated icon "${colors.yellow(iconId)}"`);
   });
+
+
+  localSvg.forEach(({ name, svgStr }, index) => {
+    let singleFile: string;
+
+    const componentName = upperFirst(config.trim_icon_prefix) + upperFirst(camelCase(name));
+    const currentSvgComponents = new Set<string>(['GProps', 'SvgXml']);
+
+    names.push(name);
+
+    cases += `${whitespace(4)}case '${name}':\n`;
+
+    imports.push(componentName);
+    cases += `${whitespace(6)}return <${componentName} key="L${index + 1}" {...rest} />;\n`;
+
+    singleFile = getTemplate('SingleIcon' + jsxExtension);
+    singleFile = replaceSize(singleFile, config.default_icon_size);
+    singleFile = replaceSvgComponents(singleFile, currentSvgComponents);
+    singleFile = replaceComponentName(singleFile, componentName);
+    singleFile = replaceSingleIconContent(singleFile, `\n${whitespace(4)}<SvgXml xml={\`${svgStr}\`}  width={size} height={size} {...rest} />\n`);
+    singleFile = replaceNoHelper(singleFile);
+
+    fs.writeFileSync(path.join(saveDir, componentName + jsxExtension), singleFile);
+
+    if (!config.use_typescript) {
+      let typeDefinitionFile = getTemplate('SingleIcon.d.ts');
+
+      typeDefinitionFile = replaceComponentName(typeDefinitionFile, componentName);
+      fs.writeFileSync(path.join(saveDir, componentName + '.d.ts'), typeDefinitionFile);
+    }
+
+    console.log(`${colors.green('√')} Generated local icon "${colors.yellow(name)}"`);
+  })
 
   let iconFile =  getTemplate('Icon' + jsxExtension);
 

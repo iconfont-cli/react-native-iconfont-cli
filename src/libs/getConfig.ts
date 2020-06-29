@@ -9,6 +9,7 @@ export interface Config {
   save_dir: string;
   trim_icon_prefix: string;
   default_icon_size: number;
+  local_dir?: string
 }
 
 let cacheConfig: Config;
