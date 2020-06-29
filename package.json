@@ -1,6 +1,6 @@
 {
-  "name": "@grewer/react-native-iconfont-cli",
-  "version": "2.2.0",
+  "name": "react-native-iconfont-cli",
+  "version": "2.1.0",
   "main": "index.js",
   "keywords": [
     "iconfont",
@@ -10,12 +10,8 @@
     "icons",
     "iconfont.cn"
   ],
-  "repository": "https://github.com/Grewer/react-native-iconfont-cli",
+  "repository": "git@github.com:iconfont-cli/react-native-iconfont-cli.git",
   "author": "范文华 <531362022@qq.com>",
-  "contributors": [{
-    "name": "grewer",
-    "email": "grewer@grewer.cn"
-  }],
   "license": "MIT",
   "bin": {
     "iconfont": "./commands/help.js",
@@ -45,7 +41,7 @@
     "@types/react": "^16.9.2",
     "react": "^16.9.0",
     "react-native": "^0.60.5",
-    "react-native-svg": "^9.7.1",
+    "react-native-svg": "^9.7.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   }
