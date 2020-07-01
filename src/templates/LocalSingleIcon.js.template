@@ -1,0 +1,16 @@
+/* eslint-disable */
+
+import React from 'react';
+#svgComponents#
+
+#xml#
+
+const #componentName# = ({ size, color, ...rest }) => {
+  return (#iconContent#  );
+};
+
+#componentName#.defaultProps = {
+  size: #size#,
+};
+
+export default React.memo ? React.memo(#componentName#) : #componentName#;

@@ -16,7 +16,8 @@ import {
   replaceSingleIconContent,
   replaceSize,
   replaceSvgComponents,
-  replaceHelper, replaceNoHelper,
+  replaceHelper,
+  replaceComponentXml,
 } from './replace'
 import { whitespace } from './whitespace';
 import { copyTemplate } from './copyTemplate';
@@ -108,7 +109,11 @@ export const generateComponent = (data: XmlData, localSvg: ILocalSvg[], config: 
     let singleFile: string;
 
     const componentName = upperFirst(config.trim_icon_prefix) + upperFirst(camelCase(name));
-    const currentSvgComponents = new Set<string>(['GProps']);
+    const currentSvgComponents = new Set<string>();
+
+    if (config.use_typescript) {
+      currentSvgComponents.add('GProps');
+    }
 
     currentSvgComponents.add(styleType ? 'SvgCss' : 'SvgXml');
 
@@ -120,12 +125,12 @@ export const generateComponent = (data: XmlData, localSvg: ILocalSvg[], config: 
 
     cases += `${whitespace(6)}return <${componentName} key="L${index + 1}" {...rest} />;\n`;
 
-    singleFile = getTemplate('SingleIcon' + jsxExtension);
+    singleFile = getTemplate('LocalSingleIcon' + jsxExtension);
     singleFile = replaceSize(singleFile, config.default_icon_size);
     singleFile = replaceSvgComponents(singleFile, currentSvgComponents);
     singleFile = replaceComponentName(singleFile, componentName);
-    singleFile = replaceSingleIconContent(singleFile, `\n${whitespace(4)}<${styleType ? 'SvgCss' : 'SvgXml'} xml={\`${svgStr}\`}  width={size} height={size} {...rest} />\n`);
-    singleFile = replaceNoHelper(singleFile);
+    singleFile = replaceComponentXml(singleFile, `const xml = \`\n${svgStr}\n\``);
+    singleFile = replaceSingleIconContent(singleFile, `\n${whitespace(4)}<${styleType ? 'SvgCss' : 'SvgXml'} xml={xml}  width={size} height={size} {...rest} />\n`);
 
     fs.writeFileSync(path.join(saveDir, componentName + jsxExtension), singleFile);
 
