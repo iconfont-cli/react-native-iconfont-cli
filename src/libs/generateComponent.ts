@@ -101,12 +101,16 @@ export const generateComponent = (data: XmlData, localSvg: ILocalSvg[], config: 
     console.log(`${colors.green('√')} Generated icon "${colors.yellow(iconId)}"`);
   });
 
-
-  localSvg.forEach(({ name, svgStr }, index) => {
+  /**
+   * 本地文件添加
+   */
+  localSvg.forEach(({ name, svgStr,styleType }, index) => {
     let singleFile: string;
 
     const componentName = upperFirst(config.trim_icon_prefix) + upperFirst(camelCase(name));
-    const currentSvgComponents = new Set<string>(['GProps', 'SvgXml']);
+    const currentSvgComponents = new Set<string>(['GProps']);
+
+    currentSvgComponents.add(styleType ? 'SvgCss' : 'SvgXml');
 
     names.push(name);
 
@@ -119,7 +123,7 @@ export const generateComponent = (data: XmlData, localSvg: ILocalSvg[], config: 
     singleFile = replaceSize(singleFile, config.default_icon_size);
     singleFile = replaceSvgComponents(singleFile, currentSvgComponents);
     singleFile = replaceComponentName(singleFile, componentName);
-    singleFile = replaceSingleIconContent(singleFile, `\n${whitespace(4)}<SvgXml xml={\`${svgStr}\`}  width={size} height={size} {...rest} />\n`);
+    singleFile = replaceSingleIconContent(singleFile, `\n${whitespace(4)}<${styleType ? 'SvgCss' : 'SvgXml'} xml={\`${svgStr}\`}  width={size} height={size} {...rest} />\n`);
     singleFile = replaceNoHelper(singleFile);
 
     fs.writeFileSync(path.join(saveDir, componentName + jsxExtension), singleFile);
@@ -155,7 +159,7 @@ export const generateComponent = (data: XmlData, localSvg: ILocalSvg[], config: 
   fs.writeFileSync(path.join(saveDir, 'index' + jsxExtension), iconFile);
 
   console.log(`\n${colors.green('√')} All icons have putted into dir: ${colors.green(config.save_dir)}\n`);
-};
+}
 
 const generateCase = (data: XmlData['svg']['symbol'][number], baseIdent: number) => {
   let template = `\n${whitespace(baseIdent)}<Svg viewBox="${data.$.viewBox}" width={size} height={size} {...rest}>\n`;
