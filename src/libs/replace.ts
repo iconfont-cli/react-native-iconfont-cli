@@ -49,13 +49,6 @@ export const replaceHelper = (content: string) => {
   );
 };
 
-export const replaceNoHelper = (content: string) => {
-  return content.replace(
-    /#helper#/g,
-    ''
-  );
-};
-
 export const replaceNoColor = (content: string) => {
   return content.replace(/#colorFunc#/g, '');
 };
@@ -63,3 +56,7 @@ export const replaceNoColor = (content: string) => {
 export const replaceSummaryIcon = (content: string, iconName: string) => {
   return content.replace(/#SummaryIcon#/g, iconName);
 };
+
+export const replaceComponentXml = (content: string, svgStr: string) => {
+  return content.replace(/#xml#/g, svgStr);
+}

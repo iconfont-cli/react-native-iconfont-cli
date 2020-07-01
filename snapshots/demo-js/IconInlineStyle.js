@@ -1,12 +1,10 @@
 /* eslint-disable */
 
 import React from 'react';
-import { GProps, SvgCss } from 'react-native-svg';
+import { SvgCss } from 'react-native-svg';
 
-
-const IconInlineStyle = ({ size, color, ...rest }) => {
-  return (
-    <SvgCss xml={`<svg xmlns="http://www.w3.org/2000/svg">
+const xml = `
+<svg xmlns="http://www.w3.org/2000/svg">
   <style type="text/css">
     <![CDATA[
 
@@ -18,7 +16,12 @@ const IconInlineStyle = ({ size, color, ...rest }) => {
       ]]>
   </style>
   <circle cx="40" cy="40" r="24"/>
-</svg>`}  width={size} height={size} {...rest} />
+</svg>
+`
+
+const IconInlineStyle = ({ size, color, ...rest }) => {
+  return (
+    <SvgCss xml={xml}  width={size} height={size} {...rest} />
   );
 };
 

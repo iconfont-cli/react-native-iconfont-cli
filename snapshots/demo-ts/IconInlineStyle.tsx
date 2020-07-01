@@ -5,16 +5,13 @@ import React, { FunctionComponent } from 'react';
 import { ViewProps } from 'react-native';
 import { GProps, SvgCss } from 'react-native-svg';
 
-
 interface Props extends GProps, ViewProps {
   size?: number;
   color?: string | string[];
 }
 
-
-const IconInlineStyle: FunctionComponent<Props> = ({ size, color, ...rest }) => {
-  return (
-    <SvgCss xml={`<svg xmlns="http://www.w3.org/2000/svg">
+const xml = `
+<svg xmlns="http://www.w3.org/2000/svg">
   <style type="text/css">
     <![CDATA[
 
@@ -26,7 +23,12 @@ const IconInlineStyle: FunctionComponent<Props> = ({ size, color, ...rest }) => 
       ]]>
   </style>
   <circle cx="40" cy="40" r="24"/>
-</svg>`}  width={size} height={size} {...rest} />
+</svg>
+`
+
+const IconInlineStyle: FunctionComponent<Props> = ({ size, color, ...rest }) => {
+  return (
+    <SvgCss xml={xml}  width={size} height={size} {...rest} />
   );
 };
 
