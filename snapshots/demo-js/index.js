@@ -5,7 +5,10 @@ import React from 'react';
 import IconAlipay from './IconAlipay';
 import IconUser from './IconUser';
 import IconSetup from './IconSetup';
-import IconWord from './IconWord';
+import IconClassSvg from './IconClassSvg';
+import IconInlineStyle from './IconInlineStyle';
+import IconNormal from './IconNormal';
+import IconStyle from './IconStyle';
 
 const IconFont = ({ name, ...rest }) => {
   switch (name) {
@@ -15,8 +18,14 @@ const IconFont = ({ name, ...rest }) => {
       return <IconUser key="2" {...rest} />;
     case 'setup':
       return <IconSetup key="3" {...rest} />;
-    case 'word':
-      return <IconWord key="L1" {...rest} />;
+    case 'classSvg':
+      return <IconClassSvg key="L1" {...rest} />;
+    case 'inlineStyle':
+      return <IconInlineStyle key="L2" {...rest} />;
+    case 'normal':
+      return <IconNormal key="L3" {...rest} />;
+    case 'style':
+      return <IconStyle key="L4" {...rest} />;
   }
 
   return null;

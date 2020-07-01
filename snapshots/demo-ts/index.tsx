@@ -7,9 +7,12 @@ import { GProps } from 'react-native-svg';
 import IconAlipay from './IconAlipay';
 import IconUser from './IconUser';
 import IconSetup from './IconSetup';
-import IconWord from './IconWord';
+import IconClassSvg from './IconClassSvg';
+import IconInlineStyle from './IconInlineStyle';
+import IconNormal from './IconNormal';
+import IconStyle from './IconStyle';
 
-export type IconNames = 'alipay' | 'user' | 'setup' | 'word';
+export type IconNames = 'alipay' | 'user' | 'setup' | 'classSvg' | 'inlineStyle' | 'normal' | 'style';
 
 interface Props extends GProps, ViewProps {
   name: IconNames;
@@ -25,8 +28,14 @@ const IconFont: FunctionComponent<Props> = ({ name, ...rest }) => {
       return <IconUser key="2" {...rest} />;
     case 'setup':
       return <IconSetup key="3" {...rest} />;
-    case 'word':
-      return <IconWord key="L1" {...rest} />;
+    case 'classSvg':
+      return <IconClassSvg key="L1" {...rest} />;
+    case 'inlineStyle':
+      return <IconInlineStyle key="L2" {...rest} />;
+    case 'normal':
+      return <IconNormal key="L3" {...rest} />;
+    case 'style':
+      return <IconStyle key="L4" {...rest} />;
   }
 
   return null;
