@@ -104,7 +104,7 @@ export const generateComponent = (data: XmlData, localSvg: ILocalSvg[], config: 
   /**
    * 本地文件添加
    */
-  localSvg.forEach(({ name, svgStr,styleType }, index) => {
+  localSvg.forEach(({ name, svgStr, styleType }, index) => {
     let singleFile: string;
 
     const componentName = upperFirst(config.trim_icon_prefix) + upperFirst(camelCase(name));
@@ -117,6 +117,7 @@ export const generateComponent = (data: XmlData, localSvg: ILocalSvg[], config: 
     cases += `${whitespace(4)}case '${name}':\n`;
 
     imports.push(componentName);
+
     cases += `${whitespace(6)}return <${componentName} key="L${index + 1}" {...rest} />;\n`;
 
     singleFile = getTemplate('SingleIcon' + jsxExtension);
