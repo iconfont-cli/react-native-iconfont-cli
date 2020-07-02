@@ -59,7 +59,8 @@ npx iconfont-init
     "use_typescript": false,
     "save_dir": "./src/iconfont",
     "trim_icon_prefix": "icon",
-    "default_icon_size": 18
+    "default_icon_size": 18,
+    "local_svgs": "./localSvgs"
 }
 ```
 ### 配置参数说明：
@@ -83,6 +84,9 @@ npx iconfont-init
 
 ### default_icon_size
 我们将为每个生成的图标组件加入默认的字体大小，当然，你也可以通过传入props的方式改变这个size值。
+
+### local_svgs
+本地 svg 的路径, 配置此项后在路径中添加 svg 文件即可。
 
 # Step 4
 开始生成React-Native标准组件
@@ -151,6 +155,13 @@ export const App = () => {
 
 
 ![](https://github.com/fwh1990/react-native-iconfont-cli/blob/master/images/multi-color-icon.png?raw=true)
+
+
+### 图标渐变色
+渐变色的图标 iconfont 并不支持上传, 所以需要在本地 svg 的支持, 在本地文件中添加 svg 和 `local_svgs` 配置项, 生成组件即可使用, 使用方式和 iconfont 组件相同
+
+**注 1: 当前版本暂不支持本地文件的 `color` 参数**
+**注 2: svg 的兼容受 `react-native-svg` 影响, 如果在某些机型上不显示 svg, 可检查 `react-native-svg` 是否支持**
 
 # 更新图标
 当您在iconfont.cn中的图标有变更时，只需更改配置`symbol_url`，然后再次执行`Step 4`即可生成最新的图标组件
