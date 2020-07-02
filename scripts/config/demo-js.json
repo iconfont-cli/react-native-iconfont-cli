@@ -4,5 +4,5 @@
   "save_dir": "./snapshots/demo-js",
   "trim_icon_prefix": "icon",
   "default_icon_size": 18,
-  "local_dir": "./locals"
+  "local_svgs": "./localSvgs"
 }
