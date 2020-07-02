@@ -4,5 +4,5 @@
   "save_dir": "./snapshots/demo-ts",
   "trim_icon_prefix": "icon",
   "default_icon_size": 20,
-  "local_dir": "./locals"
+  "local_svgs": "./localSvgs"
 }

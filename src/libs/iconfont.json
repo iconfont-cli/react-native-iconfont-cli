@@ -3,5 +3,6 @@
   "use_typescript": false,
   "save_dir": "./src/iconfont",
   "trim_icon_prefix": "icon",
-  "default_icon_size": 18
+  "default_icon_size": 18,
+  "local_svgs": "./localSvgs"
 }

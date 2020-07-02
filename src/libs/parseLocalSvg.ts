@@ -9,12 +9,12 @@ export interface ILocalSvg {
   styleType: boolean
 }
 
-const parseLocalSvg = ({ local_dir }: Config) => {
-  if (!local_dir) {
+const parseLocalSvg = ({ local_svgs }: Config) => {
+  if (!local_svgs) {
     return []
   }
 
-  const localDir = path.resolve(local_dir)
+  const localDir = path.resolve(local_svgs)
 
   const localSvg = glob.sync(path.join(localDir, '**/*.svg'))
 
