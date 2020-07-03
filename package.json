@@ -39,9 +39,10 @@
     "@types/mkdirp": "^0.5.2",
     "@types/node": "^12.7.2",
     "@types/react": "^16.9.2",
+    "@types/react-native": "^0.62.16",
     "react": "^16.9.0",
     "react-native": "^0.60.5",
-    "react-native-svg": "^9.7.0",
+    "react-native-svg": "9.13.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   }
