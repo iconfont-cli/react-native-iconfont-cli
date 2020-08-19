@@ -3,6 +3,7 @@
     "target": "es5",
     "module": "commonjs",
     "allowJs": false,
+    "lib": ["ESNext"],
     "declaration": true,
     "removeComments": false,
     "outDir": "./build",
