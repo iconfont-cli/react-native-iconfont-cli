@@ -10,7 +10,7 @@ import IconInlineStyle from './IconInlineStyle';
 import IconNormal from './IconNormal';
 import IconStyle from './IconStyle';
 
-const IconFont = ({ name, ...rest }) => {
+let IconFont = ({ name, ...rest }) => {
   switch (name) {
     case 'alipay':
       return <IconAlipay key="1" {...rest} />;
@@ -31,4 +31,6 @@ const IconFont = ({ name, ...rest }) => {
   return null;
 };
 
-export default React.memo ? React.memo(IconFont) : IconFont;
+IconFont = React.memo ? React.memo(IconFont) : IconFont;
+
+export default IconFont;

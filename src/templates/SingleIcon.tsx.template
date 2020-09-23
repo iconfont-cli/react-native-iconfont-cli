@@ -11,7 +11,7 @@ interface Props extends GProps, ViewProps {
   color?: string | string[];
 }
 
-const #componentName#: FunctionComponent<Props> = ({ size, color, ...rest }) => {
+let #componentName#: FunctionComponent<Props> = ({ size, color, ...rest }) => {
   return (#iconContent#  );
 };
 
@@ -19,4 +19,6 @@ const #componentName#: FunctionComponent<Props> = ({ size, color, ...rest }) => 
   size: #size#,
 };
 
-export default React.memo ? React.memo(#componentName#) : #componentName#;
+#componentName# = React.memo ? React.memo(#componentName#) : #componentName#;
+
+export default #componentName#;

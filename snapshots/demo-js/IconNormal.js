@@ -9,7 +9,7 @@ const xml = `
 </svg>
 `
 
-const IconNormal = ({ size, color, ...rest }) => {
+let IconNormal = ({ size, color, ...rest }) => {
   return (
     <SvgXml xml={xml}  width={size} height={size} {...rest} />
   );
@@ -19,4 +19,6 @@ IconNormal.defaultProps = {
   size: 18,
 };
 
-export default React.memo ? React.memo(IconNormal) : IconNormal;
+IconNormal = React.memo ? React.memo(IconNormal) : IconNormal;
+
+export default IconNormal;

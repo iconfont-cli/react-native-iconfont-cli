@@ -20,7 +20,7 @@ interface Props extends GProps, ViewProps {
   color?: string | string[];
 }
 
-const IconFont: FunctionComponent<Props> = ({ name, ...rest }) => {
+let IconFont: FunctionComponent<Props> = ({ name, ...rest }) => {
   switch (name) {
     case 'alipay':
       return <IconAlipay key="1" {...rest} />;
@@ -41,4 +41,6 @@ const IconFont: FunctionComponent<Props> = ({ name, ...rest }) => {
   return null;
 };
 
-export default React.memo ? React.memo(IconFont) : IconFont;
+IconFont = React.memo ? React.memo(IconFont) : IconFont;
+
+export default IconFont;

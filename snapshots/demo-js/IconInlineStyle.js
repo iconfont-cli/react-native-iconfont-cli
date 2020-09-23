@@ -19,7 +19,7 @@ const xml = `
 </svg>
 `
 
-const IconInlineStyle = ({ size, color, ...rest }) => {
+let IconInlineStyle = ({ size, color, ...rest }) => {
   return (
     <SvgCss xml={xml}  width={size} height={size} {...rest} />
   );
@@ -29,4 +29,6 @@ IconInlineStyle.defaultProps = {
   size: 18,
 };
 
-export default React.memo ? React.memo(IconInlineStyle) : IconInlineStyle;
+IconInlineStyle = React.memo ? React.memo(IconInlineStyle) : IconInlineStyle;
+
+export default IconInlineStyle;

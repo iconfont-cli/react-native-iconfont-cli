@@ -4,11 +4,13 @@ import React from 'react';
 #svgComponents#
 #imports#
 
-const IconFont = ({ name, ...rest }) => {
+let IconFont = ({ name, ...rest }) => {
   switch (name) {
 #cases#  }
 
   return null;
 };
 
-export default React.memo ? React.memo(IconFont) : IconFont;
+IconFont = React.memo ? React.memo(IconFont) : IconFont;
+
+export default IconFont;

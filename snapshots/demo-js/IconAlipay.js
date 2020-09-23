@@ -4,7 +4,7 @@ import React from 'react';
 import { Svg, Path } from 'react-native-svg';
 import { getIconColor } from './helper';
 
-const IconAlipay = ({ size, color, ...rest }) => {
+let IconAlipay = ({ size, color, ...rest }) => {
   return (
     <Svg viewBox="0 0 1024 1024" width={size} height={size} {...rest}>
       <Path
@@ -23,4 +23,6 @@ IconAlipay.defaultProps = {
   size: 18,
 };
 
-export default React.memo ? React.memo(IconAlipay) : IconAlipay;
+IconAlipay = React.memo ? React.memo(IconAlipay) : IconAlipay;
+
+export default IconAlipay;

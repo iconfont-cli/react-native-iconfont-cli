@@ -16,7 +16,7 @@ const xml = `
 </svg>
 `
 
-const IconNormal: FunctionComponent<Props> = ({ size, color, ...rest }) => {
+let IconNormal: FunctionComponent<Props> = ({ size, color, ...rest }) => {
   return (
     <SvgXml xml={xml}  width={size} height={size} {...rest} />
   );
@@ -26,4 +26,6 @@ IconNormal.defaultProps = {
   size: 20,
 };
 
-export default React.memo ? React.memo(IconNormal) : IconNormal;
+IconNormal = React.memo ? React.memo(IconNormal) : IconNormal;
+
+export default IconNormal;
