@@ -169,15 +169,4 @@ npx iconfont-rn
 ```
 
 
-# 扩展
-|平台|库|
-|----|---|
-|小程序|[mini-program-iconfont-cli](https://github.com/iconfont-cli/mini-program-iconfont-cli)|
-|Taro|[taro-iconfont-cli](https://github.com/iconfont-cli/taro-iconfont-cli)|
-|React H5|[react-iconfont-cli](https://github.com/iconfont-cli/react-iconfont-cli)|
-|Flutter|[flutter-iconfont-cli](https://github.com/iconfont-cli/flutter-iconfont-cli)|
-|Remax|[remax-iconfont-cli](https://github.com/iconfont-cli/remax-iconfont-cli)|
-
---------
-
 欢迎使用，并给我一些反馈和建议，让这个库做的更好
