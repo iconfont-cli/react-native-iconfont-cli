@@ -39,7 +39,7 @@ export const replaceSingleIconContent = (content: string, render: string) => {
 };
 
 export const replaceImports = (content: string, imports: string[]) => {
-  return content.replace(/#imports#/g, imports.map((item) => `import ${item} from './${item}';`).join('\n'));
+  return content.replace(/#imports#/g, imports.map((item) => `export { default as ${item} } from './${item}';`).join('\n'));
 };
 
 export const replaceHelper = (content: string) => {
