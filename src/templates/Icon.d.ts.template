@@ -5,6 +5,8 @@ import { FunctionComponent } from 'react';
 import { ViewProps } from 'react-native';
 import { GProps } from 'react-native-svg';
 
+#exports#
+
 interface Props extends GProps, ViewProps {
   name: '#names#';
   size?: number;

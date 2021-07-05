@@ -11,6 +11,7 @@ import {
   replaceCases,
   replaceComponentName,
   replaceImports,
+  replaceExports,
   replaceNames,
   replaceNamesArray,
   replaceSingleIconContent,
@@ -150,6 +151,7 @@ export const generateComponent = (data: XmlData, localSvg: ILocalSvg[], config: 
   iconFile = replaceCases(iconFile, cases);
   iconFile = replaceSvgComponents(iconFile, svgComponents);
   iconFile = replaceImports(iconFile, imports);
+  iconFile = replaceExports(iconFile, imports);
 
   if (config.use_typescript) {
     iconFile = replaceNames(iconFile, names);
@@ -158,6 +160,7 @@ export const generateComponent = (data: XmlData, localSvg: ILocalSvg[], config: 
 
     let typeDefinitionFile = getTemplate('Icon.d.ts');
 
+    typeDefinitionFile = replaceExports(typeDefinitionFile, imports);
     typeDefinitionFile = replaceNames(typeDefinitionFile, names);
     fs.writeFileSync(path.join(saveDir, 'index.d.ts'), typeDefinitionFile);
   }
