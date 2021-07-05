@@ -4,7 +4,7 @@ import colors from 'colors';
 import defaultConfig from './iconfont.json';
 
 export interface Config {
-  symbol_url: string;
+  symbol_url?: string;
   use_typescript: boolean;
   save_dir: string;
   trim_icon_prefix: string;
@@ -28,12 +28,15 @@ export const getConfig = () => {
 
   const config = require(targetFile) as Config;
 
-  if (!config.symbol_url || !/^(https?:)?\/\//.test(config.symbol_url)) {
-    console.warn(colors.red('You are required to provide symbol_url'));
+  if (
+    !config.local_svgs &&
+    (!config.symbol_url || !/^(?:https?:)?\/\//.test(config.symbol_url))
+  ) {
+    console.warn(colors.red('You are required to provide symbol_url or local_svgs'));
     process.exit(1);
   }
 
-  if (config.symbol_url.indexOf('//') === 0) {
+  if (config.symbol_url && config.symbol_url.indexOf('//') === 0) {
     config.symbol_url = 'http:' + config.symbol_url;
   }
 

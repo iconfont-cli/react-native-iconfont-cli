@@ -7,3 +7,9 @@ npx ts-node src/commands/createIcon.ts
 
 cp -f ./scripts/config/demo-ts.json ./iconfont.json
 npx ts-node src/commands/createIcon.ts
+
+cp -f ./scripts/config/demo-js-nonurl.json ./iconfont.json
+npx ts-node src/commands/createIcon.ts
+
+cp -f ./scripts/config/demo-ts-nonurl.json ./iconfont.json
+npx ts-node src/commands/createIcon.ts

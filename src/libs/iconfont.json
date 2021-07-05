@@ -1,8 +1,8 @@
 {
-  "symbol_url": "请参考README.md，复制官网提供的JS链接",
+  "symbol_url": "请参考README.md，复制官网提供的JS链接。如果提供了local_svgs，则url选填",
   "use_typescript": false,
   "save_dir": "./src/iconfont",
   "trim_icon_prefix": "icon",
   "default_icon_size": 18,
-  "local_svgs": "./localSvgs"
+  "local_svgs": ""
 }
