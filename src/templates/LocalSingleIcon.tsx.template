@@ -1,18 +1,18 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { ViewProps } from 'react-native';
 #svgComponents#
 
-interface Props extends GProps, ViewProps {
+export interface IconfontProps extends GProps, ViewProps {
   size?: number;
   color?: string | string[];
 }
 
 #xml#
 
-let #componentName#: FunctionComponent<Props> = ({ size, color, ...rest }) => {
+let #componentName#: FC<IconfontProps> = ({ size, color, ...rest }) => {
   return (#iconContent#  );
 };
 
