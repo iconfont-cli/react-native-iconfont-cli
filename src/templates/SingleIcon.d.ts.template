@@ -1,15 +1,15 @@
 /* eslint-disable */
 
-import { FunctionComponent } from 'react';
+import { FC } from 'react';
 // Don't forget to install package: @types/react-native
 import { ViewProps } from 'react-native';
 import { GProps } from 'react-native-svg';
 
-interface Props extends GProps, ViewProps {
+export interface IconfontProps extends GProps, ViewProps {
   size?: number;
   color?: string | string[];
 }
 
-declare const #componentName#: FunctionComponent<Props>;
+declare const #componentName#: FC<IconfontProps>;
 
 export default #componentName#;
