@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { ViewProps } from 'react-native';
 import { GProps } from 'react-native-svg';
 import IconClassSvg from './IconClassSvg';
@@ -11,13 +11,13 @@ import IconStyle from './IconStyle';
 
 export type IconNames = 'classSvg' | 'inlineStyle' | 'normal' | 'style';
 
-interface Props extends GProps, ViewProps {
+export interface IconfontProps extends GProps, ViewProps {
   name: IconNames;
   size?: number;
   color?: string | string[];
 }
 
-let IconFont: FunctionComponent<Props> = ({ name, ...rest }) => {
+let IconFont: FC<IconfontProps> = ({ name, ...rest }) => {
   switch (name) {
     case 'classSvg':
       return <IconClassSvg key="L1" {...rest} />;

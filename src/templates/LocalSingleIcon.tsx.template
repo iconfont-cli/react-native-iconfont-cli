@@ -4,15 +4,16 @@
 import React, { FC } from 'react';
 import { ViewProps } from 'react-native';
 #svgComponents#
+#helper#
 
 export interface IconfontProps extends GProps, ViewProps {
   size?: number;
   color?: string | string[];
 }
 
-#xml#
-
 let #componentName#: FC<IconfontProps> = ({ size, color, ...rest }) => {
+  #xml#
+
   return (#iconContent#  );
 };
 

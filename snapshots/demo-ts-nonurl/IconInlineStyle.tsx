@@ -1,32 +1,27 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { ViewProps } from 'react-native';
 import { GProps, SvgCss } from 'react-native-svg';
+import { getIconColor } from './helper';
 
-interface Props extends GProps, ViewProps {
+export interface IconfontProps extends GProps, ViewProps {
   size?: number;
   color?: string | string[];
 }
 
-const xml = `
+let IconInlineStyle: FC<IconfontProps> = ({ size, color, ...rest }) => {
+  const xml = `
 <svg xmlns="http://www.w3.org/2000/svg">
   <style type="text/css">
     <![CDATA[
 
         circle {
            stroke: #006600;
-           fill:   #00cc00;
-        }
-
-      ]]>
-  </style>
-  <circle cx="40" cy="40" r="24"/>
-</svg>
+           fill: ${getIconColor(color, 0, '#333333')}
 `
 
-let IconInlineStyle: FunctionComponent<Props> = ({ size, color, ...rest }) => {
   return (
     <SvgCss xml={xml}  width={size} height={size} {...rest} />
   );

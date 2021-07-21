@@ -1,39 +1,46 @@
-import glob from 'glob'
-import path from 'path'
-import { Config } from '../libs/getConfig'
-import * as fs from 'fs'
+import glob from "glob";
+import path from "path";
+import { Config } from "../libs/getConfig";
+import * as fs from "fs";
 
 export interface ILocalSvg {
-  svgStr: string
-  name: string
-  styleType: boolean
+  svgStr: string;
+  name: string;
+  styleType: boolean;
 }
 
 const parseLocalSvg = ({ local_svgs }: Config) => {
   if (!local_svgs) {
-    return []
+    return [];
   }
 
-  const localDir = path.resolve(local_svgs)
+  const localDir = path.resolve(local_svgs);
 
-  const localSvg = glob.sync(path.join(localDir, '**/*.svg'))
+  const localSvg = glob.sync(path.join(localDir, "**/*.svg"));
 
   return localSvg.reduce<ILocalSvg[]>((previousValue, currentValue) => {
-
-    let svgStr = fs.readFileSync(currentValue, 'utf-8')
+    let svgStr = fs.readFileSync(currentValue, "utf-8");
 
     /**
      * 去除注释,title,desc等不需要的标签
      */
-    svgStr = svgStr.substring(svgStr.indexOf('<svg '), svgStr.indexOf('</svg>') + 6)
-      .replace(/<!-(.*?)->/g, '').replace(/<title>(.*?)<\/title>/g, '').replace(/<desc>(.*?)<\/desc>/g, '')
+    svgStr = svgStr
+      .substring(svgStr.indexOf("<svg "), svgStr.indexOf("</svg>") + 6)
+      .replace(/<!-(.*?)->/g, "")
+      .replace(/<title>(.*?)<\/title>/g, "")
+      .replace(/<desc>(.*?)<\/desc>/g, "");
 
-    const styleType = !!~svgStr.indexOf('</style>')
+    const styleType =
+      !!~svgStr.indexOf("</style>") || !!~svgStr.indexOf("style=");
 
-    previousValue.push({ svgStr, name: path.basename(currentValue, '.svg'), styleType })
+    previousValue.push({
+      svgStr,
+      name: path.basename(currentValue, ".svg"),
+      styleType,
+    });
 
-    return previousValue
-  }, [])
-}
+    return previousValue;
+  }, []);
+};
 
-export default parseLocalSvg
+export default parseLocalSvg;
