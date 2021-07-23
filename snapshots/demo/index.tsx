@@ -3,10 +3,10 @@
 
 import React, { FC } from 'react';
 import { ViewProps } from 'react-native';
-#svgComponents#
-#imports#
+import { GProps } from 'react-native-svg';
+import IconArrowdown from './IconArrowdown';
 
-export type IconNames = '#names#';
+export type IconNames = 'arrowdown';
 
 export interface SvgIconProps extends GProps, ViewProps {
   name: IconNames;
@@ -16,7 +16,9 @@ export interface SvgIconProps extends GProps, ViewProps {
 
 let SvgIcon: FC<SvgIconProps> = ({ name, ...rest }) => {
   switch (name) {
-#cases#
+    case 'arrowdown':
+      return <IconArrowdown {...rest} />;
+
     default:
       return null;
   }

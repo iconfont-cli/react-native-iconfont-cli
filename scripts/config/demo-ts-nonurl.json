@@ -1,7 +1,0 @@
-{
-  "use_typescript": true,
-  "save_dir": "./snapshots/demo-ts-nonurl",
-  "trim_icon_prefix": "icon",
-  "default_icon_size": 20,
-  "local_svgs": "./localSvgs"
-}

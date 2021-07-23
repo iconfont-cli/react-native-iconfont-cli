@@ -2,14 +2,5 @@
 
 rm -rf snapshots/*
 
-cp -f ./scripts/config/demo-js.json ./iconfont.json
-npx ts-node src/commands/createIcon.ts
-
-cp -f ./scripts/config/demo-ts.json ./iconfont.json
-npx ts-node src/commands/createIcon.ts
-
-cp -f ./scripts/config/demo-js-nonurl.json ./iconfont.json
-npx ts-node src/commands/createIcon.ts
-
-cp -f ./scripts/config/demo-ts-nonurl.json ./iconfont.json
+cp -f ./scripts/demo.json ./svgicon.json
 npx ts-node src/commands/createIcon.ts

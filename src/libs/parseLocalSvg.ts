@@ -9,12 +9,12 @@ export interface ILocalSvg {
   styleType: boolean;
 }
 
-const parseLocalSvg = ({ local_svgs }: Config) => {
-  if (!local_svgs) {
+const parseLocalSvg = ({ icon_svg }: Config) => {
+  if (!icon_svg) {
     return [];
   }
 
-  const localDir = path.resolve(local_svgs);
+  const localDir = path.resolve(icon_svg);
 
   const localSvg = glob.sync(path.join(localDir, "**/*.svg"));
 
@@ -28,7 +28,8 @@ const parseLocalSvg = ({ local_svgs }: Config) => {
       .substring(svgStr.indexOf("<svg "), svgStr.indexOf("</svg>") + 6)
       .replace(/<!-(.*?)->/g, "")
       .replace(/<title>(.*?)<\/title>/g, "")
-      .replace(/<desc>(.*?)<\/desc>/g, "");
+      .replace(/<desc>(.*?)<\/desc>/g, "")
+      .replace(/fill\=\"none\"/g, "");
 
     const styleType =
       !!~svgStr.indexOf("</style>") || !!~svgStr.indexOf("style=");

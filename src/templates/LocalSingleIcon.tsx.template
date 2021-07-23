@@ -5,6 +5,7 @@ import React, { FC } from 'react';
 import { ViewProps } from 'react-native';
 #svgComponents#
 #helper#
+#px#
 
 export interface IconfontProps extends GProps, ViewProps {
   size?: number;
@@ -18,7 +19,7 @@ let #componentName#: FC<IconfontProps> = ({ size, color, ...rest }) => {
 };
 
 #componentName#.defaultProps = {
-  size: #size#,
+  size: px(#size#),
 };
 
 #componentName# = React.memo ? React.memo(#componentName#) : #componentName#;

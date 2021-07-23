@@ -2,6 +2,23 @@ export const replaceSize = (content: string, size: number) => {
   return content.replace(/#size#/g, String(size));
 };
 
+export const replacePx = (content: string, for_library: boolean) => {
+  if (for_library) {
+    return content.replace(
+      /#px#/g,
+      `import { px } from '../helpers/normalize';`
+    );
+  }
+  return content.replace(
+    /#px#/g,
+    `
+      import { helpers } from '@td-design/react-native';
+
+      const { px } = helpers;
+    `
+  );
+};
+
 export const replaceCases = (content: string, cases: string) => {
   return content.replace(/#cases#/g, cases);
 };
