@@ -9,6 +9,13 @@ import IconClassSvg from './IconClassSvg';
 import IconInlineStyle from './IconInlineStyle';
 import IconNormal from './IconNormal';
 import IconStyle from './IconStyle';
+export { default as IconAlipay } from './IconAlipay';
+export { default as IconUser } from './IconUser';
+export { default as IconSetup } from './IconSetup';
+export { default as IconClassSvg } from './IconClassSvg';
+export { default as IconInlineStyle } from './IconInlineStyle';
+export { default as IconNormal } from './IconNormal';
+export { default as IconStyle } from './IconStyle';
 
 let IconFont = ({ name, ...rest }) => {
   switch (name) {

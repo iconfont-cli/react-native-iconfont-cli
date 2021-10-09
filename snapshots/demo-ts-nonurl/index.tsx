@@ -8,6 +8,10 @@ import IconClassSvg from './IconClassSvg';
 import IconInlineStyle from './IconInlineStyle';
 import IconNormal from './IconNormal';
 import IconStyle from './IconStyle';
+export { default as IconClassSvg } from './IconClassSvg';
+export { default as IconInlineStyle } from './IconInlineStyle';
+export { default as IconNormal } from './IconNormal';
+export { default as IconStyle } from './IconStyle';
 
 export type IconNames = 'classSvg' | 'inlineStyle' | 'normal' | 'style';
 
